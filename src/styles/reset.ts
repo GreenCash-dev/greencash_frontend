@@ -1,7 +1,8 @@
 import { css } from '@emotion/react';
 
 export const reset = css`
-  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+  @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
   html,
   body,
   div,

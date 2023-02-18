@@ -6,44 +6,21 @@ export const globalStyle = css`
   ${reset}
 
   :root {
-    --color-background: rgba(249, 249, 249);
+    --color-background: #ffffff;
   }
-  * {
-    box-sizing: border-box;
-    font-family: 'Pretendard';
+  .notosanskr * {
+    font-family: 'Noto Sans KR', sans-serif;
   }
   html {
     font-size: 10px;
     color: #fff;
+    ::-webkit-scrollbar {
+      display: none;
+    }
   }
   body {
-    font-size: 1.6rem;
-    font-weight: 700;
-    font-family: 'Pretendard';
-    letter-spacing: -0.05rem;
+    font-family: 'Noto Sans KR';
     color: var(--color-text-primary);
     background-color: var(--color-background);
-  }
-  .outer {
-    height: 100vh;
-    overflow-y: auto;
-  }
-  .outer::-webkit-scrollbar {
-    display: none;
-  }
-  .scroll::-webkit-scrollbar {
-    display: none;
-  }
-  .inner {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 100px;
-  }
-  .container {
-    width: 100%;
-    max-width: 1280px;
-    margin: 0 auto;
   }
 `;
