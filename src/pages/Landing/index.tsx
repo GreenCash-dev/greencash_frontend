@@ -1,6 +1,8 @@
-import React, { EventHandler, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import * as S from './styled';
+import { Back_Bottom, Back_Desc, Title } from '@src/components';
+import { useScrollFadeIn } from '@src/hooks';
 
 export const Landing: React.FC = () => {
   const outerDivRef = useRef<HTMLDivElement>(document.createElement('div'));
@@ -9,8 +11,6 @@ export const Landing: React.FC = () => {
       e.preventDefault();
       const { deltaY } = e;
       const { scrollTop } = outerDivRef.current; // 스크롤 위쪽 끝부분 위치
-      const pageHeight = window.innerHeight; // 화면 세로길이, 100vh와 같습니다.
-      console.log(scrollTop, pageHeight);
       if (deltaY > 0) {
         if (Math.round(scrollTop) === scrollTop / 2) {
           outerDivRef.current.scrollTo({
@@ -26,7 +26,7 @@ export const Landing: React.FC = () => {
           });
         }
       } else if (deltaY < -5) {
-        if (scrollTop < 700) {
+        if (scrollTop < 730) {
           outerDivRef.current.scrollTo({
             top: 0,
             left: 0,
@@ -47,20 +47,38 @@ export const Landing: React.FC = () => {
       outerDivRefCurrent?.removeEventListener('wheel', wheelHandler);
     };
   }, []);
+  const scrollAnimated = {
+    0: useScrollFadeIn<HTMLHeadingElement>('up', 1, 0.5),
+    1: useScrollFadeIn<HTMLHeadingElement>('up', 1, 1),
+    2: useScrollFadeIn<HTMLHeadingElement>('up', 1, 1.2),
+    3: useScrollFadeIn<HTMLHeadingElement>('up', 1, 1.4),
+    4: useScrollFadeIn<HTMLHeadingElement>('up', 1, 1.5),
+  };
   return (
     <S.MainContainer ref={outerDivRef}>
-      <S.Inner style={{ background: 'black' }}>
+      <S.Inner>
         <S.MainLogo src="https://cdn.discordapp.com/attachments/1054718420651872266/1076443893282906192/Frame_4.png" />
       </S.Inner>
-      <S.Inner style={{ background: 'red' }}>
-        <S.MainLogo src="https://cdn.discordapp.com/attachments/1054718420651872266/1076443893282906192/Frame_4.png" />
+      <S.Inner>
+        <S.DescContainer>
+          <S.TitleContainer>
+            <Title TitleText="Background" />
+          </S.TitleContainer>
+          <S.Back_Desc_Container {...scrollAnimated[0]}>
+            <Back_Desc />
+          </S.Back_Desc_Container>
+          <S.Back_CircleContainer>
+            <S.Back_Circle {...scrollAnimated[1]} />
+            <S.Back_Circle {...scrollAnimated[2]} />
+            <S.Back_Circle {...scrollAnimated[3]} />
+          </S.Back_CircleContainer>
+          <S.Back_Bottom_Container {...scrollAnimated[4]}>
+            <Back_Bottom />
+          </S.Back_Bottom_Container>
+        </S.DescContainer>
       </S.Inner>
-      <S.Inner style={{ background: 'blue' }}>
-        <S.MainLogo src="https://cdn.discordapp.com/attachments/1054718420651872266/1076443893282906192/Frame_4.png" />
-      </S.Inner>
-      <S.Inner style={{ background: 'green' }}>
-        <S.MainLogo src="https://cdn.discordapp.com/attachments/1054718420651872266/1076443893282906192/Frame_4.png" />
-      </S.Inner>
+      <S.Inner></S.Inner>
+      <S.Inner></S.Inner>
     </S.MainContainer>
   );
 };
