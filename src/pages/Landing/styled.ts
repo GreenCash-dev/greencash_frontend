@@ -31,6 +31,7 @@ export const TitleContainer = styled.div`
   margin-bottom: 13rem;
 `;
 
+//background**********************************
 export const Back_Desc_Container = styled.div``;
 export const Back_Bottom_Container = styled.div``;
 export const Back_CircleContainer = styled.div`
@@ -46,4 +47,30 @@ export const Back_Circle = styled.div`
   margin: 0.5rem 0 0.5rem 0;
   background: #d9d9d9;
   border-radius: 10px;
+`;
+//*********************************/
+//Preview*************************************
+export const PreviewSection = styled.div`
+  width: 100%;
+  display: flex;
+  position: relative;
+`;
+
+export const PreviewTextContainer = styled.div`
+  position: absolute;
+  margin-top: 10rem;
+  margin-left: 12rem;
+`;
+export const PreviewImgContainer = styled.div`
+  width: 100%;
+`;
+
+export const PreviewTitleContainer = styled.div`
+  margin-bottom: 3rem;
+`;
+export const PreviewDescContainer = styled.div``;
+
+export const PreviewImg = styled.img`
+  float: right;
+  height: 100vh;
 `;
