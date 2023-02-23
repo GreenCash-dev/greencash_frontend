@@ -74,3 +74,61 @@ export const PreviewImg = styled.img`
   float: right;
   height: 100vh;
 `;
+/******************** */
+
+/*************MainListImg***********/
+export const MainListSection = styled.div`
+  width: 100%;
+  display: flex;
+  position: relative;
+`;
+export const MainListImg = styled.img`
+  margin: auto;
+  height: 100vh;
+`;
+export const MainListTextContainer = styled.div`
+  position: absolute;
+`;
+export const MainListImgContainer = styled.div`
+  width: 100%;
+  display: flex;
+`;
+/***************** */
+
+/****************OneAbility ****************/
+export const OneAbilitySection = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+`;
+export const OneAbilityImgContainer = styled.div`
+  margin-bottom: -8rem;
+`;
+
+export const OneAbilityImg = styled.img`
+  height: 85vh;
+`;
+
+export const OneAbilityTextContainer = styled.div`
+  position: absolute;
+  margin-top: 18rem;
+`;
+/**************************************** */
+
+/*********************StepAbility******************** */
+export const StepAbilitySection = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 80%;
+`;
+
+export const StepAbilityImg = styled.img`
+  width: 939px;
+  height: 90vh;
+  margin: auto;
+`;
+export const StepAbilityTextContainer = styled.div`
+  position: absolute;
+  margin: 9rem 0 0 0;
+`;

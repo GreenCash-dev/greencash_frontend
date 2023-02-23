@@ -1,7 +1,17 @@
 import React, { useEffect, useRef } from 'react';
 
 import * as S from './styled';
-import { Back_Bottom, Back_Desc, PreviewDesc, PreviewTitle, Title } from '@src/components';
+import {
+  Back_Bottom,
+  Back_Desc,
+  MainList,
+  OneAbility,
+  PreviewDesc,
+  PreviewTitle,
+  StepAbility,
+  Title,
+  TopNavbar,
+} from '@src/components';
 import { useScrollFadeIn } from '@src/hooks';
 
 export const Landing: React.FC = () => {
@@ -67,7 +77,7 @@ export const Landing: React.FC = () => {
       <S.Inner>
         <S.DescContainer>
           <S.TitleContainer>
-            <Title TitleText="Background" />
+            <Title useCenter={true} TitleText="Background" />
           </S.TitleContainer>
           <S.Back_Desc_Container {...Back_scrollAnimated[0]}>
             <Back_Desc />
@@ -97,7 +107,34 @@ export const Landing: React.FC = () => {
           </S.PreviewImgContainer>
         </S.PreviewSection>
       </S.Inner>
-      <S.Inner></S.Inner>
+      <S.Inner>
+        <S.MainListSection>
+          <S.MainListTextContainer>
+            <MainList />
+          </S.MainListTextContainer>
+          <S.MainListImgContainer>
+            <S.MainListImg src="https://cdn.discordapp.com/attachments/1054718420651872266/1078144555699949669/1_1.png" />
+          </S.MainListImgContainer>
+        </S.MainListSection>
+      </S.Inner>
+      <S.Inner>
+        <S.OneAbilitySection>
+          <TopNavbar CirclePosition={1} />
+          <S.OneAbilityTextContainer>
+            <OneAbility />
+          </S.OneAbilityTextContainer>
+          <S.OneAbilityImg src="https://cdn.discordapp.com/attachments/1054718420651872266/1078158130308993124/Frame_9.png" />
+        </S.OneAbilitySection>
+      </S.Inner>
+      <S.Inner>
+        <S.StepAbilitySection>
+          <S.StepAbilityTextContainer>
+            <Title useCenter={false} TitleText="단계별 인증" />
+            <StepAbility />
+          </S.StepAbilityTextContainer>
+          <S.StepAbilityImg src="https://cdn.discordapp.com/attachments/1054718420651872266/1078186504796520540/Frame_10.png" />
+        </S.StepAbilitySection>
+      </S.Inner>
     </S.MainContainer>
   );
 };
