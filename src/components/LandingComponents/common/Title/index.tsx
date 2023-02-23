@@ -4,6 +4,9 @@ import * as S from './styled';
 
 interface TitleData {
   TitleText: string;
+  useCenter: boolean;
 }
 
-export const Title: React.FC<TitleData> = ({ TitleText }) => <S.Title>{TitleText}</S.Title>;
+export const Title: React.FC<TitleData> = ({ TitleText, useCenter }) => (
+  <S.Title Center={useCenter}>{TitleText}</S.Title>
+);
