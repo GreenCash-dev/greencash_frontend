@@ -19,6 +19,7 @@ export const globalStyle = css`
     }
   }
   body {
+    user-select: none;
     font-family: 'Noto Sans KR';
     color: var(--color-text-primary);
     background-color: var(--color-background);
