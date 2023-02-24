@@ -7,5 +7,5 @@ export const GuideDesc = styled.div`
 
   color: rgba(23, 30, 63, 0.5);
 
-  margin-top: 2rem;
+  margin-top: 2.1rem;
 `;
