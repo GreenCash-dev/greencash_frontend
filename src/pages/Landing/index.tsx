@@ -4,17 +4,23 @@ import * as S from './styled';
 import {
   Back_Bottom,
   Back_Desc,
+  Campaign,
+  Guide,
   MainList,
   OneAbility,
   PreviewDesc,
   PreviewTitle,
   StepAbility,
+  Store,
   Title,
   TopNavbar,
 } from '@src/components';
 import { useScrollFadeIn } from '@src/hooks';
 
 export const Landing: React.FC = () => {
+  //이거 스크롤 할 때 정해진 Top 위치로 이동하기로
+  //눌러서 섹션 이동하기 찾아보기
+  //코드 컴포넌트로 줄이기
   const outerDivRef = useRef<HTMLDivElement>(document.createElement('div'));
   useEffect(() => {
     const wheelHandler = (e: WheelEvent) => {
@@ -77,7 +83,7 @@ export const Landing: React.FC = () => {
       <S.Inner>
         <S.DescContainer>
           <S.TitleContainer>
-            <Title useCenter={true} TitleText="Background" />
+            <Title textAlign={'center'} TitleText="Background" />
           </S.TitleContainer>
           <S.Back_Desc_Container {...Back_scrollAnimated[0]}>
             <Back_Desc />
@@ -119,7 +125,7 @@ export const Landing: React.FC = () => {
       </S.Inner>
       <S.Inner>
         <S.OneAbilitySection>
-          <TopNavbar CirclePosition={1} />
+          <TopNavbar CirclePosition={1} marginTop="7rem" marginBottom="5rem" />
           <S.OneAbilityTextContainer>
             <OneAbility />
           </S.OneAbilityTextContainer>
@@ -129,11 +135,47 @@ export const Landing: React.FC = () => {
       <S.Inner>
         <S.StepAbilitySection>
           <S.StepAbilityTextContainer>
-            <Title useCenter={false} TitleText="단계별 인증" />
+            <Title textAlign={'none'} TitleText="단계별 인증" />
             <StepAbility />
           </S.StepAbilityTextContainer>
           <S.StepAbilityImg src="https://cdn.discordapp.com/attachments/1054718420651872266/1078186504796520540/Frame_10.png" />
         </S.StepAbilitySection>
+      </S.Inner>
+      <S.Inner>
+        <S.GuideSection>
+          <TopNavbar CirclePosition={1} marginTop="3rem" marginBottom="5rem" />
+          <S.GuideTextContainer>
+            <Title textAlign={'none'} TitleText="가이드라인" />
+            <Guide />
+          </S.GuideTextContainer>
+          <S.GuideImgContainer>
+            <S.GuideLineImg src="https://cdn.discordapp.com/attachments/1054718420651872266/1078333370460815390/image_20.png" />
+            <S.GuideLineDetailImg src="https://cdn.discordapp.com/attachments/1054718420651872266/1078333522227499189/0014_1.png" />
+          </S.GuideImgContainer>
+        </S.GuideSection>
+      </S.Inner>
+      <S.Inner>
+        <S.CampaignSection>
+          <S.CampaignTextContainer>
+            <Title textAlign={'none'} TitleText="캠페인" />
+            <Campaign />
+          </S.CampaignTextContainer>
+          <S.CampaignImgContainer>
+            <S.CampaignImg src="https://cdn.discordapp.com/attachments/1054718420651872266/1078571338463203388/faeff604a99d037b.png" />
+          </S.CampaignImgContainer>
+        </S.CampaignSection>
+      </S.Inner>
+      <S.Inner>
+        <S.StoreSection>
+          <TopNavbar CirclePosition={1} marginTop="-1rem" marginBottom="5rem" />
+          <S.StoreTextContainer>
+            <Title textAlign={'right'} TitleText="스토어" />
+            <Store />
+          </S.StoreTextContainer>
+          <S.StoreImgContainer>
+            <S.StoreImg src="https://cdn.discordapp.com/attachments/1054718420651872266/1078588928241704960/Frame_11.png" />
+          </S.StoreImgContainer>
+        </S.StoreSection>
       </S.Inner>
     </S.MainContainer>
   );

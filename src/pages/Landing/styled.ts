@@ -101,6 +101,10 @@ export const OneAbilitySection = styled.div`
   flex-direction: column;
   position: relative;
 `;
+export const OneAbilityTextContainer = styled.div`
+  position: absolute;
+  margin-top: 18rem;
+`;
 export const OneAbilityImgContainer = styled.div`
   margin-bottom: -8rem;
 `;
@@ -109,10 +113,6 @@ export const OneAbilityImg = styled.img`
   height: 85vh;
 `;
 
-export const OneAbilityTextContainer = styled.div`
-  position: absolute;
-  margin-top: 18rem;
-`;
 /**************************************** */
 
 /*********************StepAbility******************** */
@@ -131,4 +131,81 @@ export const StepAbilityImg = styled.img`
 export const StepAbilityTextContainer = styled.div`
   position: absolute;
   margin: 9rem 0 0 0;
+`;
+/*************************************** */
+
+/*****************guide****************** */
+export const GuideSection = styled.div`
+  width: 1088px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+`;
+
+export const GuideTextContainer = styled.div`
+  position: absolute;
+
+  margin-left: -10rem;
+  margin-top: 12rem;
+`;
+
+export const GuideLineImg = styled.img`
+  height: 70vh;
+  margin-left: 20rem;
+`;
+export const GuideLineDetailImg = styled.img`
+  height: 80vh;
+`;
+
+export const GuideImgContainer = styled.div`
+  height: 77vh;
+
+  margin: auto;
+`;
+/*********************Guide********************* */
+
+/*******************Campaign********************* */
+export const CampaignSection = styled.div`
+  width: 87%;
+
+  display: flex;
+  position: relative;
+`;
+export const CampaignTextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+
+  margin-top: 47.5rem;
+`;
+export const CampaignImgContainer = styled.div`
+  margin: auto;
+`;
+
+export const CampaignImg = styled.img`
+  height: 85vh;
+`;
+/**************************** */
+/*******************Store********************* */
+export const StoreSection = styled.div`
+  width: 1088px;
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+`;
+
+export const StoreTextContainer = styled.div`
+  position: absolute;
+  width: 100%;
+
+  margin-top: 7rem;
+  margin-left: 3rem;
+`;
+
+export const StoreImgContainer = styled.div`
+  margin: auto;
+`;
+export const StoreImg = styled.img`
+  height: 75vh;
 `;
