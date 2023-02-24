@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
 
-export const TopNavbarContainer = styled.div`
+export const TopNavbarContainer = styled.div<{ marginTop: string; marginBottom: string }>`
   display: flex;
   flex-direction: column;
-  margin-top: 7rem;
-  margin-bottom: 5rem;
+  margin-top: ${(props) => props.marginTop};
+  margin-bottom: ${(props) => props.marginBottom};
 `;
 export const TopNavbarMenus = styled.div`
   margin: auto;
