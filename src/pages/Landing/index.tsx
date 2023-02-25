@@ -5,6 +5,7 @@ import {
   Back_Bottom,
   Back_Desc,
   Campaign,
+  Gift,
   Guide,
   MainList,
   OneAbility,
@@ -176,6 +177,17 @@ export const Landing: React.FC = () => {
             <S.StoreImg src="https://cdn.discordapp.com/attachments/1054718420651872266/1078588928241704960/Frame_11.png" />
           </S.StoreImgContainer>
         </S.StoreSection>
+      </S.Inner>
+      <S.Inner>
+        <S.GiftSection>
+          <S.GiftTextContainer>
+            <Title textAlign="none" TitleText="기부하기" />
+            <Gift />
+          </S.GiftTextContainer>
+          <S.GiftImgContainer>
+            <S.GiftImg src="https://cdn.discordapp.com/attachments/1054718420651872266/1079073240212832286/Frame_12.png" />
+          </S.GiftImgContainer>
+        </S.GiftSection>
       </S.Inner>
     </S.MainContainer>
   );

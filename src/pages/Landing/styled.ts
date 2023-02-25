@@ -209,3 +209,24 @@ export const StoreImgContainer = styled.div`
 export const StoreImg = styled.img`
   height: 75vh;
 `;
+/************************************* */
+/***********************Gift************************* */
+export const GiftSection = styled.div`
+  display: flex;
+  position: relative;
+
+  width: 80%;
+`;
+
+export const GiftTextContainer = styled.div`
+  position: absolute;
+
+  margin-top: 9rem;
+`;
+export const GiftImgContainer = styled.div`
+  margin-left: 40rem;
+`;
+
+export const GiftImg = styled.img`
+  height: 90vh;
+`;
