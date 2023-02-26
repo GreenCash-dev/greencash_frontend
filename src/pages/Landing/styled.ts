@@ -101,7 +101,7 @@ export const OneAbilitySection = styled.div`
   flex-direction: column;
   position: relative;
 
-  width: 80%;
+  width: 1088px;
 `;
 export const OneAbilityTextContainer = styled.div`
   position: absolute;

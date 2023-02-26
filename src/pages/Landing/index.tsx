@@ -35,13 +35,11 @@ export const Landing: React.FC = () => {
         if (Math.round(scrollTop) === scrollTop / 2) {
           outerDivRef.current.scrollTo({
             top: pageHeight,
-            left: 0,
             behavior: 'smooth',
           });
         } else if (scrollTop > 740) {
           outerDivRef.current.scrollTo({
             top: pageHeight * (scrollTop / pageHeight + 1),
-            left: 0,
             behavior: 'smooth',
           });
         }
@@ -49,13 +47,11 @@ export const Landing: React.FC = () => {
         if (scrollTop === pageHeight) {
           outerDivRef.current.scrollTo({
             top: 0,
-            left: 0,
             behavior: 'smooth',
           });
         } else {
           outerDivRef.current.scrollTo({
             top: scrollTop - pageHeight,
-            left: 0,
             behavior: 'smooth',
           });
         }
