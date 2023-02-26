@@ -100,18 +100,15 @@ export const OneAbilitySection = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
+
+  width: 80%;
 `;
 export const OneAbilityTextContainer = styled.div`
   position: absolute;
   margin-top: 18rem;
 `;
-export const OneAbilityImgContainer = styled.div`
-  margin-bottom: -8rem;
-`;
 
-export const OneAbilityImg = styled.img`
-  height: 85vh;
-`;
+export const OneAbilityImg = styled.img``;
 
 /**************************************** */
 
@@ -124,13 +121,12 @@ export const StepAbilitySection = styled.div`
 `;
 
 export const StepAbilityImg = styled.img`
-  width: 939px;
-  height: 90vh;
+  width: 90%;
   margin: auto;
 `;
 export const StepAbilityTextContainer = styled.div`
   position: absolute;
-  margin: 9rem 0 0 0;
+  margin: 12rem 0 0 0;
 `;
 /*************************************** */
 
@@ -140,15 +136,21 @@ export const GuideSection = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
+
+  height: 100%;
 `;
 
 export const GuideTextContainer = styled.div`
   position: absolute;
 
   margin-left: -10rem;
-  margin-top: 12rem;
+  margin-top: 18rem;
 `;
 
+export const GuideImgContainer = styled.div`
+  margin: auto;
+  margin-bottom: 0;
+`;
 export const GuideLineImg = styled.img`
   height: 70vh;
   margin-left: 20rem;
@@ -157,16 +159,11 @@ export const GuideLineDetailImg = styled.img`
   height: 80vh;
 `;
 
-export const GuideImgContainer = styled.div`
-  height: 77vh;
-
-  margin: auto;
-`;
 /*********************Guide********************* */
 
 /*******************Campaign********************* */
 export const CampaignSection = styled.div`
-  width: 87%;
+  width: 85%;
 
   display: flex;
   position: relative;
@@ -176,7 +173,7 @@ export const CampaignTextContainer = styled.div`
   flex-direction: column;
   position: absolute;
 
-  margin-top: 47.5rem;
+  margin-top: 66vh;
 `;
 export const CampaignImgContainer = styled.div`
   margin: auto;
@@ -200,7 +197,7 @@ export const StoreTextContainer = styled.div`
   width: 100%;
 
   margin-top: 7rem;
-  margin-left: 3rem;
+  margin-left: 15rem;
 `;
 
 export const StoreImgContainer = styled.div`

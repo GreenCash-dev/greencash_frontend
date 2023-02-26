@@ -29,22 +29,24 @@ export const Landing: React.FC = () => {
       e.preventDefault();
       const { deltaY } = e;
       const { scrollTop } = outerDivRef.current; // 스크롤 위쪽 끝부분 위치
+      const pageHeight = window.innerHeight;
+      console.log(pageHeight * (scrollTop / pageHeight + 1));
       if (deltaY > 0) {
         if (Math.round(scrollTop) === scrollTop / 2) {
           outerDivRef.current.scrollTo({
-            top: scrollTop + 753,
+            top: pageHeight,
             left: 0,
             behavior: 'smooth',
           });
         } else if (scrollTop > 740) {
           outerDivRef.current.scrollTo({
-            top: scrollTop + 753,
+            top: pageHeight * (scrollTop / pageHeight + 1),
             left: 0,
             behavior: 'smooth',
           });
         }
       } else if (deltaY < -5) {
-        if (scrollTop < 730) {
+        if (scrollTop === pageHeight) {
           outerDivRef.current.scrollTo({
             top: 0,
             left: 0,
@@ -52,7 +54,7 @@ export const Landing: React.FC = () => {
           });
         } else {
           outerDivRef.current.scrollTo({
-            top: scrollTop - 753,
+            top: scrollTop - pageHeight,
             left: 0,
             behavior: 'smooth',
           });
