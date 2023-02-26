@@ -8,6 +8,7 @@ import {
   Gift,
   Guide,
   MainList,
+  Mission,
   OneAbility,
   PreviewDesc,
   PreviewTitle,
@@ -188,6 +189,18 @@ export const Landing: React.FC = () => {
             <S.GiftImg src="https://cdn.discordapp.com/attachments/1054718420651872266/1079073240212832286/Frame_12.png" />
           </S.GiftImgContainer>
         </S.GiftSection>
+      </S.Inner>
+      <S.Inner>
+        <S.MissionSection>
+          <TopNavbar CirclePosition={2} marginTop="7rem" marginBottom="5rem" />
+          <S.MissionTextContainer>
+            <Title textAlign="none" TitleText="미션" />
+            <Mission />
+          </S.MissionTextContainer>
+          <S.MissionImgContainer>
+            <S.MissionImg src="https://cdn.discordapp.com/attachments/1054718420651872266/1079221945175920671/Flying_iPhone_X_Mockups_1.png" />
+          </S.MissionImgContainer>
+        </S.MissionSection>
       </S.Inner>
     </S.MainContainer>
   );

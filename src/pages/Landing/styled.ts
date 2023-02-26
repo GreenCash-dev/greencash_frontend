@@ -230,3 +230,26 @@ export const GiftImgContainer = styled.div`
 export const GiftImg = styled.img`
   height: 90vh;
 `;
+/********************************************8 */
+/*********************Mission*********************** */
+export const MissionSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  width: 1088px;
+`;
+
+export const MissionTextContainer = styled.div`
+  position: absolute;
+  margin-top: 15rem;
+  margin-left: -10rem;
+`;
+
+export const MissionImgContainer = styled.div`
+  margin: auto;
+`;
+export const MissionImg = styled.img`
+  height: 85vh;
+  margin-left: 10rem;
+`;

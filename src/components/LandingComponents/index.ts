@@ -4,6 +4,7 @@ export * from './StepAbility';
 export * from './Campaign';
 export * from './Store';
 export * from './Preview';
+export * from './Mission';
 export * from './Guide';
 export * from './Gift';
 export * from './Main';
