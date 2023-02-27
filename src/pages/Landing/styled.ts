@@ -143,7 +143,7 @@ export const GuideSection = styled.div`
 export const GuideTextContainer = styled.div`
   position: absolute;
 
-  margin-left: -10rem;
+  margin-left: -20rem;
   margin-top: 18rem;
 `;
 
