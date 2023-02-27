@@ -12,8 +12,6 @@ export const globalStyle = css`
     font-family: 'Noto Sans KR', sans-serif;
   }
   html {
-    font-size: 10px;
-    color: #fff;
     ::-webkit-scrollbar {
       display: none;
     }
