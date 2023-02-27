@@ -132,7 +132,7 @@ export const StepAbilityTextContainer = styled.div`
 
 /*****************guide****************** */
 export const GuideSection = styled.div`
-  width: 1088px;
+  width: 55%;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -152,11 +152,11 @@ export const GuideImgContainer = styled.div`
   margin-bottom: 0;
 `;
 export const GuideLineImg = styled.img`
-  height: 70vh;
+  height: 60vh;
   margin-left: 20rem;
 `;
 export const GuideLineDetailImg = styled.img`
-  height: 80vh;
+  height: 75vh;
 `;
 
 /*********************Guide********************* */
