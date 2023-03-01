@@ -12,6 +12,49 @@ export const GuideLineBox = styled.div`
   margin-top: 16px;
 `;
 
+export const GuideLineIconContainer = styled.div`
+  margin: 22px 0 auto 20px;
+`;
+
 export const GuideLinePageIcon = styled.img`
-  width: 6px;
+  height: 18px;
+`;
+
+//text
+export const GuideLineText = styled.div`
+  font-size: 18px;
+  font-weight: bold;
+  padding-top: 21px;
+  margin-left: 15px;
+`;
+
+//design
+export const LinesContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+`;
+export const LineOneAndFive = styled.div`
+  width: 37px;
+  height: 3px;
+
+  border-radius: 10px;
+  background-color: rgba(224, 225, 225, 1);
+  margin: 4px auto 0 auto;
+`;
+export const LineThree = styled.div`
+  width: 54px;
+  height: 3px;
+
+  border-radius: 10px;
+  background-color: rgba(221, 236, 214, 1);
+  margin: 4px auto 0 auto;
+`;
+export const LineTwoAndFour = styled.div`
+  width: 62px;
+  height: 3px;
+
+  border-radius: 10px;
+  background-color: rgba(221, 236, 214, 1);
+  margin: 4px auto 0 auto;
 `;
