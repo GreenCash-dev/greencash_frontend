@@ -48,7 +48,7 @@ export const CertificationText = styled.div`
 export const StateContainer = styled.div`
   display: flex;
   padding-top: 28px;
-  margin-left: 70px;
+  margin: 0 auto 0 auto;
 `;
 export const StateDot = styled.div<{ success: boolean; state: boolean }>`
   width: ${(props) => (props.state ? '74px' : '6.5px')};
