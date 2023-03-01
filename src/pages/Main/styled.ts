@@ -12,7 +12,7 @@ export const CashOnHandPosition = styled.div`
 
 export const OnecCertificationContainer = styled.section``;
 export const StepCertificationContainer = styled.section``;
-export const GuideLineContainer = styled.div``;
+export const GuideLineContainer = styled.section``;
 
 export const InteractionContainer = styled.div``;
 export const CampaignContainer = styled.div``;
