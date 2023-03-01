@@ -9,11 +9,9 @@ const App: React.FC = () => {
   return (
     <MediaResponsive>
       <Navbar />
-      <MainScreen>
-        <Routes>
-          <Route index element={<MainPage />} />
-        </Routes>
-      </MainScreen>
+      <Routes>
+        <Route index element={<MainPage />} />
+      </Routes>
     </MediaResponsive>
   );
 };
@@ -28,12 +26,6 @@ export const MediaResponsive = styled.div`
   flex-direction: column;
   margin: 0px auto;
   background-color: rgba(245, 245, 245, 1);
-`;
-
-export const MainScreen = styled.main`
-  position: relative;
-  width: 370px;
-  margin: auto;
 `;
 
 export default App;

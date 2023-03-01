@@ -11,7 +11,7 @@ export const CashOnHandPosition = styled.div`
 `;
 
 export const OnecCertificationContainer = styled.section``;
-export const StepCertificationContainer = styled.div``;
+export const StepCertificationContainer = styled.section``;
 export const GuideLineContainer = styled.div``;
 
 export const InteractionContainer = styled.div``;
@@ -21,3 +21,9 @@ export const StoreContainer = styled.div``;
 export const DoGiveContainer = styled.div``;
 
 export const QAContainer = styled.div``;
+
+export const MainScreen = styled.main`
+  position: relative;
+  width: 88%;
+  margin: auto;
+`;
