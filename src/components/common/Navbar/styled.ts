@@ -9,6 +9,8 @@ export const NavbarBox = styled.div`
 
   background-color: #ffffff;
   box-shadow: rgb(0 0 0 / 4%) 0px 7px 10px 0px;
+
+  z-index: 99;
 `;
 
 export const NavbarText = styled.div`
