@@ -2,7 +2,7 @@ import React from 'react';
 
 import * as S from './styled';
 
-export const Store: React.FC = () => (
+export const LandingStore: React.FC = () => (
   <S.StoreDesc>
     다양한 곳에서 캐시 사용가능해요.
     <br />
