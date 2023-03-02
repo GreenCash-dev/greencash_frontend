@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 
 export const CampaignBox = styled.div`
-  width: 145px;
-  height: 125px;
+  width: 170px;
+  height: 140px;
 
   display: flex;
   border-radius: 10px;
