@@ -13,7 +13,7 @@ import {
   PreviewDesc,
   PreviewTitle,
   StepAbility,
-  Store,
+  LandingStore,
   Title,
   TopNavbar,
 } from '@src/components';
@@ -170,7 +170,7 @@ export const Landing: React.FC = () => {
           <TopNavbar CirclePosition={1} marginTop="-1rem" marginBottom="5rem" />
           <S.StoreTextContainer>
             <Title textAlign={'right'} TitleText="스토어" />
-            <Store />
+            <LandingStore />
           </S.StoreTextContainer>
           <S.StoreImgContainer>
             <S.StoreImg src="https://cdn.discordapp.com/attachments/1054718420651872266/1078588928241704960/Frame_11.png" />
