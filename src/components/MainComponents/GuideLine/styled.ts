@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const GuideLineBox = styled.div`
   width: 100%;
-  height: 60px;
+  height: 65px;
   display: flex;
 
   border-radius: 10px;
