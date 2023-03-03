@@ -16,12 +16,16 @@ const App: React.FC = () => {
 };
 
 export const MediaResponsive = styled.div`
-  @media screen and (max-width: 425px), screen and (min-width: 768px) {
-    width: 425px;
+  @media screen and (max-width: 425px) {
+    width: 100%;
+    height: 100%;
+  }
+  @media screen and (min-width: 425px) {
+    width: 100%;
     height: 100%;
   }
   @media screen and (max-width: 375px) {
-    width: 375px;
+    width: 374px;
     height: 100%;
   }
 
