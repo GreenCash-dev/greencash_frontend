@@ -2,6 +2,10 @@ import styled from '@emotion/styled';
 
 export const MainScreen = styled.main`
   position: relative;
+  width: 100%;
+`;
+
+export const Menus = styled.section`
   width: 88%;
   margin: auto;
   & > * {
@@ -27,11 +31,19 @@ export const GuideLineContainer = styled.section``;
 export const InteractionContainer = styled.section`
   display: flex;
 `;
-export const CampaignContainer = styled.div``;
-export const StoreGiveContainer = styled.div``;
-export const StoreContainer = styled.div``;
+export const CampaignContainer = styled.div`
+  width: 100%;
+`;
+export const StoreGiveContainer = styled.div`
+  width: 100%;
+`;
+export const StoreContainer = styled.div`
+  width: 100%;
+`;
 export const DoGiveContainer = styled.div`
   margin-top: 20px;
 `;
 
-export const QAContainer = styled.div``;
+export const QAContainer = styled.section`
+  width: 100%;
+`;
