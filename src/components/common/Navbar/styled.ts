@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const NavbarBox = styled.div`
+export const NavbarBox = styled.header`
   top: 0;
   width: 100%;
   height: 70px;
