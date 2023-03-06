@@ -8,6 +8,7 @@ export const GuideLineBox = styled.div`
   border-radius: 10px;
   box-shadow: rgb(0 0 0 / 4%) 0px 7px 10px 0px;
   background-color: #ffffff;
+  cursor: pointer;
 `;
 
 export const GuideLineIconContainer = styled.div`

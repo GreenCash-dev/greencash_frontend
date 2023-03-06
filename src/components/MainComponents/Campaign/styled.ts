@@ -8,6 +8,7 @@ export const CampaignBox = styled.div`
   border-radius: 10px;
   box-shadow: rgb(0 0 0 / 4%) 0px 7px 10px 0px;
   background: linear-gradient(309deg, rgba(150, 222, 90, 1), rgba(196, 234, 99, 1));
+  cursor: pointer;
 `;
 
 export const CampaignContainer = styled.div`
