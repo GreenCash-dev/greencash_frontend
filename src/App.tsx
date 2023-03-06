@@ -1,7 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router';
 
-import { Footer, Navbar } from './components';
 import styled from '@emotion/styled';
 import { MainPage } from './pages';
 
@@ -16,16 +15,16 @@ const App: React.FC = () => {
 };
 
 export const MediaResponsive = styled.div`
-  @media screen and (max-width: 425px) {
-    width: 100%;
-    height: 100%;
-  }
   @media screen and (min-width: 425px) {
-    width: 100%;
+    width: 425px;
     height: 100%;
   }
   @media screen and (max-width: 375px) {
-    width: 374px;
+    width: 375px;
+    height: 100%;
+  }
+  @media screen and (max-width: 320px) {
+    width: 320px;
     height: 100%;
   }
 
