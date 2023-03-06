@@ -7,6 +7,7 @@ export const GiveBox = styled.div`
   display: flex;
   border-radius: 10px;
   box-shadow: rgba(0 0 0 / 4%) 0px 0px 10px 5px;
+  cursor: pointer;
 `;
 
 export const GivePosition = styled.div`

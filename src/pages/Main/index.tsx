@@ -1,7 +1,10 @@
 import {
   Campaign,
   CashOnHand,
-  Footer,
+  FooterMainIcon,
+  FooterMissionIcon,
+  FooterProfileIcon,
+  FooterSearchIcon,
   Give,
   GuideLine,
   Navbar,
@@ -10,12 +13,15 @@ import {
   StepCertification,
   Store,
 } from '@src/components';
-import React from 'react';
+import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import * as S from './styled';
 
 export const MainPage: React.FC = () => {
   //https://www.crocus.co.kr/1582 css background gradation
+  const location = useLocation();
+  const [locationPathName, setLocationPath] = useState(location.pathname.split('/')[0]);
   return (
     <S.MainScreen>
       <Navbar />
@@ -51,7 +57,22 @@ export const MainPage: React.FC = () => {
           <Question />
         </S.QAContainer>
       </S.Menus>
-      <Footer />
+      <S.FooterBox>
+        <S.FooterContainer>
+          <S.FooterMainIconContainer>
+            <FooterMainIcon locationPath={locationPathName} />
+          </S.FooterMainIconContainer>
+          <S.FooterMissionIconContainer>
+            <FooterMissionIcon locationPath={locationPathName} />
+          </S.FooterMissionIconContainer>
+          <S.FooterSearchIconContainer>
+            <FooterSearchIcon locationPath={locationPathName} />
+          </S.FooterSearchIconContainer>
+          <S.FooterProfileIconContainer>
+            <FooterProfileIcon locationPath={locationPathName} />
+          </S.FooterProfileIconContainer>
+        </S.FooterContainer>
+      </S.FooterBox>
     </S.MainScreen>
   );
 };

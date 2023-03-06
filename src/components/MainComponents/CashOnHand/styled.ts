@@ -9,6 +9,7 @@ export const CashOnHandBox = styled.div`
 
   display: flex;
   background-color: rgba(252, 253, 253, 1);
+  cursor: pointer;
 `;
 export const CashOnHandIcon = styled.div`
   width: 12px;

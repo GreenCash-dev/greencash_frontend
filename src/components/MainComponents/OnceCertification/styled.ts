@@ -6,6 +6,7 @@ export const OnceCertificationBox = styled.div`
 
   border-radius: 10px;
   background: linear-gradient(134deg, rgba(150, 222, 90, 1), rgba(196, 234, 99, 1));
+  cursor: pointer;
 `;
 
 export const OnceCertificationContainer = styled.div`
