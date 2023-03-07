@@ -1,10 +1,5 @@
 import styled from '@emotion/styled';
 
-export const MainScreen = styled.main`
-  position: relative;
-  width: 100%;
-`;
-
 export const Menus = styled.section`
   width: 88%;
   margin: auto;

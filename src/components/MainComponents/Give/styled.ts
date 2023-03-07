@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
+import { NavLink } from 'react-router-dom';
 
-export const GiveBox = styled.div`
+export const GiveBox = styled(NavLink)`
   height: 55px;
 
   margin: 0 auto auto 18px;
@@ -8,6 +9,8 @@ export const GiveBox = styled.div`
   border-radius: 10px;
   box-shadow: rgba(0 0 0 / 4%) 0px 0px 10px 5px;
   cursor: pointer;
+
+  text-decoration: none;
 `;
 
 export const GivePosition = styled.div`
