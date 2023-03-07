@@ -13,6 +13,7 @@ import {
   StepCertification,
   Store,
 } from '@src/components';
+import { useTitle } from '@src/hooks';
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
@@ -22,8 +23,9 @@ export const MainPage: React.FC = () => {
   //https://www.crocus.co.kr/1582 css background gradation
   const location = useLocation();
   const [locationPathName, setLocationPath] = useState(location.pathname.split('/')[0]);
+  useTitle('메인');
   return (
-    <S.MainScreen>
+    <>
       <Navbar />
       <S.Menus>
         <S.CashOnHandContainer>
@@ -73,6 +75,6 @@ export const MainPage: React.FC = () => {
           </S.FooterProfileIconContainer>
         </S.FooterContainer>
       </S.FooterBox>
-    </S.MainScreen>
+    </>
   );
 };
