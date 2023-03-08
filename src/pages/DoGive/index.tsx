@@ -33,7 +33,7 @@ export const DoGivePage: React.FC = () => {
       </S.DoGiveCashInfoSection>
       <S.DoGiveButtonSection>
         <Button
-          CashIsMinus={haveCash - state < 0}
+          CashIsMinus={haveCash - state < 0 || state < 0}
           OnClick={() => {
             setDoingGive(Number(doingGive + state));
             setHaveCash(haveCash - state);
