@@ -27,7 +27,7 @@ export const DoGiveCashInfoSection = styled.section``;
 
 export const DoGiveButtonSection = styled.section`
   width: 100%;
-  margin: auto auto 40px auto;
+  margin: auto auto 45px auto;
 `;
 
 export const WarningText = styled.span`
