@@ -11,6 +11,7 @@ export const GiveBox = styled(NavLink)`
   cursor: pointer;
 
   text-decoration: none;
+  background-color: #ffffff;
 `;
 
 export const GivePosition = styled.div`

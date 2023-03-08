@@ -8,6 +8,7 @@ export const StoreBox = styled.div`
   border-radius: 10px;
   box-shadow: rgb(0 0 0 / 4%) 0px 0px 10px 5px;
   cursor: pointer;
+  background-color: #ffffff;
 `;
 
 export const StorePosition = styled.div`
