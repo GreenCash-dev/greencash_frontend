@@ -11,7 +11,7 @@ export const ButtonElement = styled.button<{ backgroundColor: string; disabledBu
     props.disabled ? '#DEDEDE' : 'linear-gradient(134deg, rgba(150, 222, 90, 1), rgba(196, 234, 99, 1))'};
 `;
 
-export const TextInButton = styled.span<{ fontSize: string; fontColor: string }>`
+export const TextInButton = styled.div<{ fontSize: string; fontColor: string }>`
   font-family: 'Noto Sans KR', sans-serif;
   text-align: center;
   font-size: ${(props) => props.fontSize};
