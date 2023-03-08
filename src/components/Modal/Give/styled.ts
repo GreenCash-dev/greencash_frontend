@@ -61,6 +61,7 @@ export const GiveSuccessCloseButton = styled.button`
   border-bottom: none;
   border-radius: 0 0 10px 10px;
   background-color: #ffffff;
+  cursor: pointer;
 `;
 
 export const GiveSuccessCloseButtonText = styled.span`

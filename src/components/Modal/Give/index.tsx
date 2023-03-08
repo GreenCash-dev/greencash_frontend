@@ -16,8 +16,8 @@ export const GiveSuccessModal: React.FC<CloseHandlerProps> = ({ CloseHandler }) 
             <S.GiveSuccessModalDesc>환경을 위해 쓰일 예정입니다.</S.GiveSuccessModalDesc>
           </S.GiveSuccessDescContainer>
         </S.TopContainer>
-        <S.GiveSuccessCloseButton>
-          <S.GiveSuccessCloseButtonText onClick={CloseHandler}>확인</S.GiveSuccessCloseButtonText>
+        <S.GiveSuccessCloseButton onClick={CloseHandler}>
+          <S.GiveSuccessCloseButtonText>확인</S.GiveSuccessCloseButtonText>
         </S.GiveSuccessCloseButton>
       </S.GiveSuccessModalBox>
     </S.ModalWarp>
