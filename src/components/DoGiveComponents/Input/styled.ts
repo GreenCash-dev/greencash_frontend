@@ -1,15 +1,12 @@
 import styled from '@emotion/styled';
 
-export const DoGiveInputContainer = styled.div`
-  width: 100%;
-  height: 44px;
-`;
 export const DoGiveInputElement = styled.input`
   width: 100%;
-  height: 100%;
+  padding-top: 17px;
+  padding-bottom: 12px;
 
   font-size: 15px;
-  font-weight: bold;
+  font-weight: 600;
   text-align: center;
   color: #616368;
   border: 1.5px solid #d6d7d7;

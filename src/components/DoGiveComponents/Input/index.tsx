@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { SetStateAction } from 'react';
 
 import * as S from './styled';
 
-export const DoGiveInput: React.FC = () => {
+interface DoGiveCashProps {
+  setGiveCash: React.Dispatch<SetStateAction<string>>;
+}
+
+export const DoGiveInput: React.FC<DoGiveCashProps> = ({ setGiveCash }) => {
   return (
-    <S.DoGiveInputContainer>
-      <S.DoGiveInputElement placeholder="캐시를 입력하세요" />
-    </S.DoGiveInputContainer>
+    <S.DoGiveInputElement
+      pattern="^[0-9]*"
+      type="number"
+      onChange={(event) => setGiveCash(event.target.value)}
+      placeholder="캐시를 입력하세요"
+    />
   );
 };
