@@ -10,11 +10,11 @@ export const DescTitle = styled.span`
 `;
 
 export const DescDetailData = styled(NavLink)`
-  width: 115px;
+  width: 110px;
   height: 15px;
   color: #000000;
   font-weight: bold;
-  font-size: 13px;
+  font-size: 12.5px;
 
   text-decoration: none;
   border-bottom: 1.7px solid #000000;
