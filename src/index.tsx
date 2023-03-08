@@ -6,13 +6,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import { globalStyle } from './styles';
+import { RecoilRoot } from 'recoil';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Global styles={globalStyle} />
-      <App />
+      <RecoilRoot>
+        <Global styles={globalStyle} />
+        <App />
+      </RecoilRoot>
     </BrowserRouter>
   </React.StrictMode>
 );
