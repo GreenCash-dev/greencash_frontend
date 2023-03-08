@@ -5,7 +5,7 @@ export const DoGiveInputElement = styled.input`
   padding-top: 17px;
   padding-bottom: 12px;
 
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   text-align: center;
   color: #616368;
