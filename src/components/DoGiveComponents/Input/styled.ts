@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const DoGiveInputElement = styled.input`
-  width: 100%;
+  width: 98%;
   padding-top: 17px;
   padding-bottom: 12px;
 
