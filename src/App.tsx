@@ -17,18 +17,22 @@ const App: React.FC = () => {
   );
 };
 
-export const MediaResponsive = styled.div`
+export const MediaResponsive = styled.main`
   @media screen and (min-width: 425px) {
     width: 425px;
-    height: 790px;
+    height: 100%;
   }
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 425px) {
+    width: 100%;
+    height: 100%;
+  }
+  @media screen and (max-width: 376px) {
     width: 375px;
-    height: 790px;
+    height: 100%;
   }
   @media screen and (max-width: 320px) {
     width: 320px;
-    height: 790px;
+    height: 100%;
   }
 
   position: relative;
@@ -37,8 +41,10 @@ export const MediaResponsive = styled.div`
   margin: 0px auto;
   background-color: rgba(245, 245, 245, 1);
 `;
-export const MainScreen = styled.main`
+export const MainScreen = styled.div`
   position: relative;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 export default App;
