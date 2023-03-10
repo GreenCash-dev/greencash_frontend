@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router';
 
 import styled from '@emotion/styled';
-import { DoGivePage, MainPage } from '@src/pages';
+import { DoGivePage, MainPage, OnceCertificationPage } from '@src/pages';
 
 const App: React.FC = () => {
   return (
@@ -11,6 +11,7 @@ const App: React.FC = () => {
         <Routes>
           <Route index element={<MainPage />} />
           <Route path="give" element={<DoGivePage />} />
+          <Route path="once" element={<OnceCertificationPage />} />
         </Routes>
       </MainScreen>
     </MediaResponsive>
