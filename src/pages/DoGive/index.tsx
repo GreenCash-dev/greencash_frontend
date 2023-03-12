@@ -35,14 +35,14 @@ export const DoGivePage: React.FC = () => {
       </S.DoGiveDescSection>
       <S.DoGiveCashInputSection>
         <DoGiveInput setGiveCash={setGiveCash} />
-        {haveCash - state < 0 && <S.WarningText>캐시가 부족합니다.</S.WarningText>}
+        {haveCash - state < 0 && <S.WarningText>캐시가 부족해요.</S.WarningText>}
       </S.DoGiveCashInputSection>
       <S.DoGiveCashInfoSection>
         <DoingGive GivingCash={doingGive} PlantIconSrc={PlantIcon} OwnCash={haveCash} UpArrowIconSrc={UpArrowIcon} />
       </S.DoGiveCashInfoSection>
       <S.DoGiveButtonSection>
         <Button
-          CashIsMinus={haveCash - state < 0 || state < 0}
+          CashIsMinus={haveCash - state < 0 || state < 0 || !state}
           OnClick={() => {
             setDoingGive(Number(doingGive + state));
             setHaveCash(haveCash - state);
