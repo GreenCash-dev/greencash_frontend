@@ -15,13 +15,14 @@ import {
 } from '@src/components';
 import { useTitle } from '@src/hooks';
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import * as S from './styled';
 
 export const MainPage: React.FC = () => {
   //https://www.crocus.co.kr/1582 css background gradation
   const location = useLocation();
+  const navigate = useNavigate();
   const [locationPathName, setLocationPath] = useState(location.pathname.split('/')[0]);
   useTitle('메인');
   return (
@@ -33,7 +34,7 @@ export const MainPage: React.FC = () => {
             <CashOnHand AmountOfCash={0} />
           </S.CashOnHandPosition>
         </S.CashOnHandContainer>
-        <S.OnecCertificationContainer>
+        <S.OnecCertificationContainer onClick={() => navigate('/once')}>
           <OnceCertification />
         </S.OnecCertificationContainer>
         <S.StepCertificationContainer>
