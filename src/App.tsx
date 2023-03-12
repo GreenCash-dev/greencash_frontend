@@ -2,7 +2,8 @@ import React from 'react';
 import { Routes, Route } from 'react-router';
 
 import styled from '@emotion/styled';
-import { DoGivePage, MainPage, OnceCertificationPage } from '@src/pages';
+import { DoGivePage, MainPage, OnceCertCapturePage } from '@src/pages';
+import { OnceCertificationPage } from './pages/OnceCert/Certificaiton';
 
 const App: React.FC = () => {
   return (
@@ -11,7 +12,9 @@ const App: React.FC = () => {
         <Routes>
           <Route index element={<MainPage />} />
           <Route path="give" element={<DoGivePage />} />
-          <Route path="once" element={<OnceCertificationPage />} />
+          <Route path="once" element={<OnceCertCapturePage />}>
+            <Route path="certification" element={<OnceCertificationPage />} />
+          </Route>
         </Routes>
       </MainScreen>
     </MediaResponsive>
