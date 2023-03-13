@@ -37,7 +37,7 @@ export const OnceCertCapturePage: React.FC = () => {
     asd[nj] = c;
     nj++;
     console.log(c);
-    setCaptured(asd[nj] === '');
+    setCaptured(asd[nj] === '' || asd[asd.length - 1] !== ' ');
     const headers = {
       accept: 'application/json',
     };
