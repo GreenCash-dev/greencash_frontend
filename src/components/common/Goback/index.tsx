@@ -1,6 +1,5 @@
 import React from 'react';
 import * as S from './styled';
-import { useGoBack as GoBack } from '@src/hooks';
 
 import LeftArrowIcon from '@assets/LeftArrow.svg';
 import { NavigateFunction } from 'react-router';
@@ -11,5 +10,5 @@ interface PathMoveProps {
 }
 
 export const GobackIcon: React.FC<PathMoveProps> = ({ MoveWhere, NavigateFunc }) => (
-  <S.LeftArrow onClick={() => NavigateFunc(MoveWhere)} src={LeftArrowIcon} />
+  <S.LeftArrow alt="뒤로가기" onClick={() => NavigateFunc(MoveWhere)} src={LeftArrowIcon} />
 );
