@@ -1,16 +1,74 @@
-import { Button, CheckedPicture, GobackIcon } from '@src/components';
-import React from 'react';
+import { Button, CheckedPicture, GobackIcon, SuccessCertificationModal } from '@src/components';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 
 import * as S from './styled';
 import { certificationPictureState } from '@src/atom/CertificationPicture';
+import { SuccessModalState, havingCashState } from '@src/atom';
+import Gift from '@assets/Gift.svg';
+import ShoppingCartIcon from '@assets/ShoppingCart.svg';
 
 export const OnceCertificationPage: React.FC = () => {
   const navigate = useNavigate();
   const [pic, setPic] = useRecoilState(certificationPictureState);
-  const Modal = () => {
-    console.log('인증완료를 누르면 모달창 하나를 띄운다');
+  const setCertificationPictureState = useSetRecoilState(certificationPictureState);
+  const [modalState, setModalState] = useRecoilState(SuccessModalState);
+  const setCertificationModalState = useSetRecoilState(SuccessModalState);
+  const setHavingCashState = useSetRecoilState(havingCashState);
+  const [havingCash, setHavingCash] = useRecoilState(havingCashState);
+  const [sendCash, setSendCash] = useState(0);
+  useEffect(() => {
+    if (pic.pictureFive !== '') {
+      setSendCash(200);
+    } else if (pic.pictureFour !== '') {
+      setSendCash(160);
+    } else if (pic.pictureThree !== '') {
+      setSendCash(120);
+    } else if (pic.pictureTwo !== '') {
+      setSendCash(80);
+    } else if (pic.pictureOne !== '') {
+      setSendCash(40);
+    }
+  }, []);
+  const SuccessCertificationOnClick = () => {
+    setCertificationPictureState((prev) => ({
+      ...prev,
+      pictureOne: '',
+      pictureTwo: '',
+      pictureThree: '',
+      pictureFour: '',
+      pictureFive: '',
+    }));
+    setHavingCashState((prev) => ({
+      ...prev,
+      cash: prev.cash + sendCash,
+    }));
+    setCertificationModalState((prev) => ({
+      ...prev,
+      view: 'success',
+    }));
+    console.log(havingCash);
+  };
+  const handleClose = () => {
+    setModalState((prev) => ({
+      ...prev,
+      view: 'default',
+      open: false,
+    }));
+
+    navigate('/');
+  };
+  const GoStoreOnClick = () => {
+    alert('현재 개발중이에요!');
+  };
+  const GoDonateOnClick = () => {
+    setModalState((prev) => ({
+      ...prev,
+      view: 'default',
+      open: false,
+    }));
+    navigate('/donate');
   };
   return (
     <S.OnceCertificationBackground>
@@ -57,9 +115,21 @@ export const OnceCertificationPage: React.FC = () => {
             fontSize={'15px'}
             fontColor={'#ffffff'}
             DoText="인증완료"
-            OnClick={Modal}
+            OnClick={SuccessCertificationOnClick}
           />
         </S.ButtonContainer>
+        {modalState.view === 'success' ? (
+          <SuccessCertificationModal
+            StoreIcon={ShoppingCartIcon}
+            DoGiveIcon={Gift}
+            GoHereStore={GoStoreOnClick}
+            GoHereDonate={GoDonateOnClick}
+            CloseHandler={handleClose}
+            YouGetCashNow={sendCash}
+          />
+        ) : (
+          <></>
+        )}
       </S.OnceCertScreen>
     </S.OnceCertificationBackground>
   );
