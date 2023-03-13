@@ -1,6 +1,6 @@
 import { CaptureOptionsBox, GobackIcon } from '@src/components';
 import axios from 'axios';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Webcam from 'react-webcam';
 import * as S from './styled';
@@ -11,8 +11,17 @@ const videoConstraints = {
 
 export const OnceCertCapturePage: React.FC = () => {
   const [imgSrc, setImgSrc] = useState<string>('');
+  const [saveImg, setSaveImg] = useState({
+    One: imgSrc,
+    Two: imgSrc,
+    Three: imgSrc,
+    Four: imgSrc,
+    Five: imgSrc,
+  });
   const [send, setSend] = useState<boolean>(false);
-  const [captureCount, setCaptureCount] = useState<number>(0);
+  const [asd, setAsd] = useState([saveImg.One, saveImg.Two, saveImg.Three, saveImg.Four, saveImg.Five]);
+  const [captured, setCaptured] = useState(false);
+  const [captureCount, setCaptureCount] = useState<number>(1);
   const cameraRef = useRef<Webcam>(null);
   const navigate = useNavigate();
   const capture = React.useCallback(() => {
@@ -22,8 +31,13 @@ export const OnceCertCapturePage: React.FC = () => {
       setImgSrc(imageSrc);
     }
   }, [cameraRef]);
-  const sendData = (c: any) => {
+  // eslint-disable-next-line prefer-const
+  let nj = 0;
+  const sendData = (c: string) => {
+    asd[nj] = c;
+    nj++;
     console.log(c);
+    setCaptured(asd[nj] === '');
     const headers = {
       accept: 'application/json',
     };
@@ -46,19 +60,24 @@ export const OnceCertCapturePage: React.FC = () => {
   const ChooseImageOnClick = () => {
     console.log('Choose image');
   };
+  console.log(asd);
   return (
     <S.OnceCertScreen>
       <S.GoBackContainer>
         <GobackIcon MoveWhere={-1} NavigateFunc={navigate} />
       </S.GoBackContainer>
       <S.CameraScreen>
-        <Webcam
-          style={{ opacity: 0.2, width: '100%', height: '100%' }}
-          audio={false}
-          ref={cameraRef}
-          screenshotFormat="image/jpeg"
-          videoConstraints={videoConstraints}
-        />
+        {captured ? (
+          <S.CapturedImg src={imgSrc} />
+        ) : (
+          <Webcam
+            style={{ width: '100%', height: '100%' }}
+            audio={false}
+            ref={cameraRef}
+            screenshotFormat="image/jpeg"
+            videoConstraints={videoConstraints}
+          />
+        )}
       </S.CameraScreen>
       <S.PictureCount>{captureCount}/5</S.PictureCount>
       <S.CameraOptions>
@@ -67,7 +86,7 @@ export const OnceCertCapturePage: React.FC = () => {
           OptionsBoxImgSrc="https://cdn-icons-png.flaticon.com/128/1160/1160358.png"
           OptionBoxDesc="사진 선택"
         />
-        <S.CaptureButton>
+        <S.CaptureButton disabled={captured} onClick={capture}>
           <S.BlackCircle>
             <S.WhiteCenterCircle />
           </S.BlackCircle>

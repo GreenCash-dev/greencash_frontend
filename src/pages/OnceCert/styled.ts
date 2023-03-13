@@ -19,7 +19,10 @@ export const GoBackContainer = styled.section`
 export const CameraScreen = styled.section`
   width: 100%;
   height: 63vh;
-  background-color: brown;
+`;
+export const CapturedImg = styled.img`
+  width: 100%;
+  height: 100%;
 `;
 
 export const Camera = styled.video`
@@ -62,8 +65,8 @@ export const BlackCircle = styled.div`
 `;
 
 export const WhiteCenterCircle = styled.div`
-  width: 49px;
-  height: 49px;
+  width: 47px;
+  height: 47px;
 
   display: flex;
   margin: auto;
