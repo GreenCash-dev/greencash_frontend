@@ -5,7 +5,7 @@ import Gift from '@assets/Gift.svg';
 
 export const Give: React.FC = () => {
   return (
-    <S.GiveBox to="give">
+    <S.GiveBox to="donate">
       <S.GivePosition>
         <S.GiveIcon src={Gift} />
         <S.GiveText>기부하기</S.GiveText>
