@@ -54,6 +54,7 @@ export const OnceCertCapturePage: React.FC = () => {
       .catch((err) => console.log(err));
   };
   const NextCaptureOnClick = () => {
+    setCaptured(false);
     setCaptureCount(captureCount + 1);
   };
 
