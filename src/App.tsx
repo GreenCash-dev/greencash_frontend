@@ -12,7 +12,7 @@ const App: React.FC = () => {
           <Route index element={<MainPage />} />
           <Route path="once" element={<CapturePage />} />
           <Route path="certification" element={<OnceCertificationPage />} />
-          <Route path="give" element={<DoGivePage />} />
+          <Route path="donate" element={<DoGivePage />} />
         </Routes>
       </MainScreen>
     </MediaResponsive>
