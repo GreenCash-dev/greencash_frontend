@@ -70,6 +70,8 @@ export const CanSeeCapturedImgs = styled.div`
 `;
 
 export const CapturedImg = styled.img`
+  max-width: 225px;
+  max-height: 300px;
   margin-right: 20px;
 `;
 
