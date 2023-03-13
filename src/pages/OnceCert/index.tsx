@@ -4,12 +4,14 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Webcam from 'react-webcam';
 import * as S from './styled';
+import { useRecoilState } from 'recoil';
+import { certificationPictureState } from '@src/atom/CertificationPicture';
 
 const videoConstraints = {
   facingMode: 'environment',
 };
 
-export const OnceCertCapturePage: React.FC = () => {
+export const CapturePage: React.FC = () => {
   const [imgSrc, setImgSrc] = useState<string>('');
   const [saveImg, setSaveImg] = useState({
     One: imgSrc,
@@ -19,7 +21,8 @@ export const OnceCertCapturePage: React.FC = () => {
     Five: imgSrc,
   });
   const [send, setSend] = useState<boolean>(false);
-  const [asd, setAsd] = useState([saveImg.One, saveImg.Two, saveImg.Three, saveImg.Four, saveImg.Five]);
+  const [imgArray, setImgArray] = useState([saveImg.One, saveImg.Two, saveImg.Three, saveImg.Four, saveImg.Five]);
+  const [pic, setPic] = useRecoilState(certificationPictureState);
   const [captured, setCaptured] = useState(false);
   const [captureCount, setCaptureCount] = useState<number>(1);
   const cameraRef = useRef<Webcam>(null);
@@ -34,10 +37,9 @@ export const OnceCertCapturePage: React.FC = () => {
   // eslint-disable-next-line prefer-const
   let nj = 0;
   const sendData = (c: string) => {
-    asd[nj] = c;
+    imgArray[nj] = c;
     nj++;
-    console.log(c);
-    setCaptured(asd[nj] === '' || asd[asd.length - 1] !== ' ');
+    setCaptured(imgArray[nj] === '' || imgArray[imgArray.length - 1] !== ' ');
     const headers = {
       accept: 'application/json',
     };
@@ -57,11 +59,20 @@ export const OnceCertCapturePage: React.FC = () => {
     setCaptured(false);
     setCaptureCount(captureCount + 1);
   };
-
+  const GoCertificationOnClick = () => {
+    navigate('/certification');
+    setPic((prev) => ({
+      ...prev,
+      pictureOne: imgArray[0],
+      pictureTwo: imgArray[1],
+      pictureThree: imgArray[2],
+      pictureFour: imgArray[3],
+      pictureFive: imgArray[4],
+    }));
+  };
   const ChooseImageOnClick = () => {
     console.log('Choose image');
   };
-  console.log(asd);
   return (
     <S.OnceCertScreen>
       <S.GoBackContainer>
@@ -93,9 +104,9 @@ export const OnceCertCapturePage: React.FC = () => {
           </S.BlackCircle>
         </S.CaptureButton>
         <CaptureOptionsBox
-          OptionIsNext={NextCaptureOnClick}
+          OptionIsNext={captureCount === 5 ? GoCertificationOnClick : NextCaptureOnClick}
           OptionsBoxImgSrc="https://cdn-icons-png.flaticon.com/128/109/109617.png"
-          OptionBoxDesc="다음"
+          OptionBoxDesc={captureCount === 5 ? '인증 확인' : '다음'}
         />
       </S.CameraOptions>
     </S.OnceCertScreen>
