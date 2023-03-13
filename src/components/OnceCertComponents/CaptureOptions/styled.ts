@@ -21,7 +21,7 @@ export const OptionsDesc = styled.div`
 
   color: #000000;
   text-align: center;
-  font-size: 10px;
+  font-size: 12px;
 `;
 export const OptionsContainer = styled.div`
   display: flex;
