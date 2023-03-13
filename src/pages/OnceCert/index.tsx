@@ -25,6 +25,7 @@ export const CapturePage: React.FC = () => {
   const [pic, setPic] = useRecoilState(certificationPictureState);
   const [captured, setCaptured] = useState(false);
   const [captureCount, setCaptureCount] = useState<number>(1);
+
   const cameraRef = useRef<Webcam>(null);
   const navigate = useNavigate();
   const capture = React.useCallback(() => {
@@ -57,7 +58,7 @@ export const CapturePage: React.FC = () => {
   };
   const NextCaptureOnClick = () => {
     setCaptured(false);
-    setCaptureCount(captureCount + 1);
+    if (captured) setCaptureCount(captureCount + 1);
   };
   const GoCertificationOnClick = () => {
     navigate('/certification');
@@ -69,9 +70,6 @@ export const CapturePage: React.FC = () => {
       pictureFour: imgArray[3],
       pictureFive: imgArray[4],
     }));
-  };
-  const ChooseImageOnClick = () => {
-    console.log('Choose image');
   };
   return (
     <S.OnceCertScreen>
@@ -94,9 +92,11 @@ export const CapturePage: React.FC = () => {
       <S.PictureCount>{captureCount}/5</S.PictureCount>
       <S.CameraOptions>
         <CaptureOptionsBox
-          OptionIsNext={ChooseImageOnClick}
-          OptionsBoxImgSrc="https://cdn-icons-png.flaticon.com/128/1160/1160358.png"
-          OptionBoxDesc="사진 선택"
+          NowCertificationQ={captured || captureCount > 1}
+          NoneReverseQ={false}
+          OptionOnClick={GoCertificationOnClick}
+          OptionsBoxImgSrc="https://cdn-icons-png.flaticon.com/128/109/109617.png"
+          OptionBoxDesc="지금 인증"
         />
         <S.CaptureButton disabled={captured} onClick={capture}>
           <S.BlackCircle>
@@ -104,7 +104,9 @@ export const CapturePage: React.FC = () => {
           </S.BlackCircle>
         </S.CaptureButton>
         <CaptureOptionsBox
-          OptionIsNext={captureCount === 5 ? GoCertificationOnClick : NextCaptureOnClick}
+          NowCertificationQ={captured || captureCount > 1}
+          NoneReverseQ={true}
+          OptionOnClick={captureCount === 5 ? GoCertificationOnClick : NextCaptureOnClick}
           OptionsBoxImgSrc="https://cdn-icons-png.flaticon.com/128/109/109617.png"
           OptionBoxDesc={captureCount === 5 ? '인증 확인' : '다음'}
         />
