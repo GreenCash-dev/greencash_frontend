@@ -1,4 +1,4 @@
-import { Button, GobackIcon } from '@src/components';
+import { Button, CheckedPicture, GobackIcon } from '@src/components';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
@@ -28,18 +28,31 @@ export const OnceCertificationPage: React.FC = () => {
           <S.GoToStepCert to="#">단계별 인증</S.GoToStepCert>
           <S.HowCanIHelpFont>하러가기</S.HowCanIHelpFont>
         </S.HowCanIContainer>
-        <S.CapturedImgsContainer>
-          <S.CanSeeCapturedImgs>
-            <S.CapturedImg src={pic.pictureOne} />
-            <S.CapturedImg src={pic.pictureTwo} />
-            <S.CapturedImg src={pic.pictureThree} />
-            <S.CapturedImg src={pic.pictureFour} />
-            <S.CapturedImg src={pic.pictureFive} />
-          </S.CanSeeCapturedImgs>
-        </S.CapturedImgsContainer>
+        {pic.pictureOne === '' ? (
+          <S.UndefinedPicture>
+            <S.UndefinedPictureAlerm>촬영한 사진이 없어요🤔</S.UndefinedPictureAlerm>
+          </S.UndefinedPicture>
+        ) : (
+          <S.CapturedImgsContainer>
+            <S.CanSeeCapturedImgs>
+              <S.CapturedImg src={pic.pictureOne} />
+              <S.CapturedImg src={pic.pictureTwo} />
+              <S.CapturedImg src={pic.pictureThree} />
+              <S.CapturedImg src={pic.pictureFour} />
+              <S.CapturedImg src={pic.pictureFive} />
+            </S.CanSeeCapturedImgs>
+          </S.CapturedImgsContainer>
+        )}
+        <S.CheckListContainer>
+          <CheckedPicture NoneChecked={pic.pictureOne === ''} />
+          <CheckedPicture NoneChecked={pic.pictureTwo === ''} />
+          <CheckedPicture NoneChecked={pic.pictureThree === ''} />
+          <CheckedPicture NoneChecked={pic.pictureFour === ''} />
+          <CheckedPicture NoneChecked={pic.pictureFive === ''} />
+        </S.CheckListContainer>
         <S.ButtonContainer>
           <Button
-            CashIsMinus={false}
+            CashIsMinus={pic.pictureOne === ''}
             BackgroundColor="#141C3D"
             fontSize={'15px'}
             fontColor={'#ffffff'}
