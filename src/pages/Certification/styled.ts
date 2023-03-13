@@ -70,11 +70,31 @@ export const CanSeeCapturedImgs = styled.div`
 `;
 
 export const CapturedImg = styled.img`
-  max-width: 225px;
-  max-height: 300px;
+  max-width: 255px;
+  max-height: 330px;
+
+  border-radius: 10px;
   margin-right: 20px;
+`;
+
+export const CheckListContainer = styled.section`
+  display: flex;
+  margin: 40px auto 0 auto;
 `;
 
 export const ButtonContainer = styled.section`
   margin: auto 0 20px 0;
+`;
+
+export const UndefinedPicture = styled.div`
+  display: flex;
+
+  min-width: 255px;
+  min-height: 330px;
+`;
+export const UndefinedPictureAlerm = styled.div`
+  margin: auto;
+
+  font-size: 20px;
+  font-weight: bold;
 `;
