@@ -82,3 +82,8 @@ export const PictureCount = styled.div`
   font-weight: 600;
   text-align: center;
 `;
+
+export const NoneSpace = styled.div`
+  width: 50px;
+  height: 50px;
+`;
