@@ -2,13 +2,12 @@ import styled from '@emotion/styled';
 
 export const ButtonElement = styled.button<{ backgroundColor: string; disabledButton: boolean }>`
   width: 100%;
-  height: 50px;
+  height: 55px;
 
   cursor: pointer;
   border: none;
   border-radius: 10px;
-  background: ${(props) =>
-    props.disabled ? '#DEDEDE' : 'linear-gradient(134deg, rgba(150, 222, 90, 1), rgba(196, 234, 99, 1))'};
+  background: ${(props) => (props.disabled ? '#DEDEDE' : props.backgroundColor)};
 `;
 
 export const TextInButton = styled.div<{ fontSize: string; fontColor: string }>`
