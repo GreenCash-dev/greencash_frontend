@@ -18,12 +18,15 @@ import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import * as S from './styled';
+import { useRecoilState } from 'recoil';
+import { havingCashState } from '@src/atom';
 
 export const MainPage: React.FC = () => {
   //https://www.crocus.co.kr/1582 css background gradation
   const location = useLocation();
   const navigate = useNavigate();
   const [locationPathName, setLocationPath] = useState(location.pathname.split('/')[0]);
+  const [havingCash, setHavingCash] = useRecoilState(havingCashState);
   useTitle('메인');
   return (
     <>
@@ -31,7 +34,7 @@ export const MainPage: React.FC = () => {
       <S.Menus>
         <S.CashOnHandContainer>
           <S.CashOnHandPosition>
-            <CashOnHand AmountOfCash={0} />
+            <CashOnHand AmountOfCash={havingCash.cash} />
           </S.CashOnHandPosition>
         </S.CashOnHandContainer>
         <S.OnecCertificationContainer onClick={() => navigate('/once')}>
