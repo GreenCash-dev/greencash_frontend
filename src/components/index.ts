@@ -5,3 +5,4 @@ export * from './FooterComponents';
 export * from './DoGiveComponents';
 export * from './OnceCertComponents';
 export * from './Modal';
+export * from './FqaComponents';
