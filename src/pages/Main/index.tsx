@@ -13,7 +13,7 @@ import {
   StepCertification,
   Store,
 } from '@src/components';
-import { useTitle } from '@src/hooks';
+import { useSeo } from '@src/hooks';
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -27,7 +27,7 @@ export const MainPage: React.FC = () => {
   const navigate = useNavigate();
   const [locationPathName, setLocationPath] = useState(location.pathname.split('/')[0]);
   const [havingCash, setHavingCash] = useRecoilState(havingCashState);
-  useTitle('메인');
+  useSeo('메인');
   return (
     <>
       <Navbar />
