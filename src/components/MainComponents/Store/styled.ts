@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const StoreBox = styled.div`
-  height: 63px;
+  height: 65px;
 
   margin: 0 auto auto 18px;
   display: flex;
