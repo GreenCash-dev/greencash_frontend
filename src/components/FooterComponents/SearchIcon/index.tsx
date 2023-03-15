@@ -13,7 +13,7 @@ export const FooterSearchIcon: React.FC<pathProps> = ({ locationPath }) => {
   return (
     <>
       <S.SearchIcon src={locationPath === 'Search' ? SearchIcon : NoneSearchIcon} />
-      <S.SearchText SearchTextColor={locationPath}>미션</S.SearchText>
+      <S.SearchText SearchTextColor={locationPath}>검색</S.SearchText>
     </>
   );
 };

@@ -13,7 +13,7 @@ export const FooterProfileIcon: React.FC<pathProps> = ({ locationPath }) => {
   return (
     <>
       <S.ProfileIcon src={locationPath === 'profile' ? ProfileIcon : NoneProfileIcon} />
-      <S.ProfileText ProfileTextColor={locationPath}>미션</S.ProfileText>
+      <S.ProfileText ProfileTextColor={locationPath}>프로필</S.ProfileText>
     </>
   );
 };
