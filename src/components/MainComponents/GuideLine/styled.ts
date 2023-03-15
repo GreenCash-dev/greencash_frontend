@@ -46,7 +46,7 @@ export const LineThree = styled.div`
   height: 3px;
 
   border-radius: 10px;
-  background-color: rgba(221, 236, 214, 1);
+  background-color: rgba(224, 225, 225, 1);
   margin: 4px auto 0 auto;
 `;
 export const LineTwoAndFour = styled.div`
