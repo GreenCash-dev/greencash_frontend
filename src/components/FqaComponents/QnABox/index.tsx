@@ -64,7 +64,7 @@ export const AnswerElement = styled.div<{ clickthis: boolean }>`
 export const AnswerElementText = styled.div<{ clickthis: boolean }>`
   ${(props) => (props.clickthis ? '' : 'display: none')};
   color: ${(props) => (props.clickthis ? '#ffffff' : '0')};
-  margin: auto auto 35px auto;
+  margin: auto;
   font-size: 14px;
   line-height: 20px;
 `;
