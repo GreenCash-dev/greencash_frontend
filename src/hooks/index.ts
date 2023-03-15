@@ -1,3 +1,3 @@
 export * from './useScrollFadeIn';
-export * from './useTitle';
+export * from './useSeo';
 export * from './useGoBack';
