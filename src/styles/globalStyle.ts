@@ -6,7 +6,7 @@ export const globalStyle = css`
   ${reset}
 
   :root {
-    --color-background: #2d2d2d;
+    --color-background: #f5f6f5;
   }
   .notosanskr * {
     font-family: 'Noto Sans KR', sans-serif;
