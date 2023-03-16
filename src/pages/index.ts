@@ -4,3 +4,4 @@ export * from './DoGive';
 export * from './OnceCert';
 export * from './Certification';
 export * from './QuestionAnswer';
+export * from './Campaign';
