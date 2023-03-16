@@ -5,7 +5,7 @@ import WhiteHeart from '../../../assets/WhiteHeart.svg';
 
 export const Campaign: React.FC = () => {
   return (
-    <S.CampaignBox>
+    <S.CampaignBox to="campaign">
       <S.CampaignContainer>
         <S.CampaignIcon src={WhiteHeart} />
         <S.CampaignText>캠페인</S.CampaignText>
