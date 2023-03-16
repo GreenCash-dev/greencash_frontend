@@ -5,8 +5,27 @@ export const OnceCertificationBox = styled.div`
   height: 160px;
 
   border-radius: 10px;
-  background: linear-gradient(134deg, rgba(150, 222, 90, 1), rgba(196, 234, 99, 1));
+  background: linear-gradient(
+    134deg,
+    rgba(150, 222, 90, 1),
+    rgba(196, 234, 99, 1),
+    rgba(150, 222, 90, 1),
+    rgba(196, 234, 99, 1)
+  );
+  background-size: 400% 400%;
   cursor: pointer;
+  animation: gradient 15s ease infinite;
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
 `;
 
 export const OnceCertificationContainer = styled.div`
