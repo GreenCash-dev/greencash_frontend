@@ -1,9 +1,11 @@
 import styled from '@emotion/styled';
+import { NavLink } from 'react-router-dom';
 
-export const CampaignBox = styled.div`
+export const CampaignBox = styled(NavLink)`
   width: 100%;
   height: 140px;
 
+  text-decoration: none;
   display: flex;
   border-radius: 10px;
   box-shadow: rgb(0 0 0 / 4%) 0px 7px 10px 0px;
