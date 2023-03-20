@@ -1,6 +1,7 @@
 import {
   Campaign,
   CashOnHand,
+  Footer,
   FooterMainIcon,
   FooterMissionIcon,
   FooterProfileIcon,
@@ -20,6 +21,10 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import * as S from './styled';
 import { useRecoilState } from 'recoil';
 import { havingCashState } from '@src/atom';
+
+//icons
+import FourSquaresIcon from '@assets/FourSquares.svg';
+import NoneFourSquaresIcon from '@assets/NoneCheck/NoneFourSquares.svg';
 
 export const MainPage: React.FC = () => {
   //https://www.crocus.co.kr/1582 css background gradation
@@ -62,23 +67,12 @@ export const MainPage: React.FC = () => {
         <S.QAContainer>
           <Question />
         </S.QAContainer>
+        <Footer
+          locationPathName={locationPathName}
+          MainIconPath={FourSquaresIcon}
+          NoneMainIconPath={NoneFourSquaresIcon}
+        />
       </S.Menus>
-      <S.FooterBox>
-        <S.FooterContainer>
-          <S.FooterMainIconContainer>
-            <FooterMainIcon locationPath={locationPathName} />
-          </S.FooterMainIconContainer>
-          <S.FooterMissionIconContainer>
-            <FooterMissionIcon locationPath={locationPathName} />
-          </S.FooterMissionIconContainer>
-          <S.FooterSearchIconContainer>
-            <FooterSearchIcon locationPath={locationPathName} />
-          </S.FooterSearchIconContainer>
-          <S.FooterProfileIconContainer>
-            <FooterProfileIcon locationPath={locationPathName} />
-          </S.FooterProfileIconContainer>
-        </S.FooterContainer>
-      </S.FooterBox>
     </>
   );
 };
