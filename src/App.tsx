@@ -9,6 +9,7 @@ import {
   OnceCertificationPage,
   QuestionAndAnswerPage,
   CampaignPage,
+  MissionPage,
 } from '@src/pages';
 
 const App: React.FC = () => {
@@ -21,6 +22,7 @@ const App: React.FC = () => {
           <Route path="certification" element={<OnceCertificationPage />} />
           <Route path="donate" element={<DoGivePage />} />
           <Route path="qna" element={<QuestionAndAnswerPage />} />
+          <Route path="mission" element={<MissionPage />} />
           <Route path="campaign" element={<CampaignPage />}></Route>
         </Routes>
       </MainScreen>
