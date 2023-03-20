@@ -5,3 +5,4 @@ export * from './OnceCert';
 export * from './Certification';
 export * from './QuestionAnswer';
 export * from './Campaign';
+export * from './Mission';

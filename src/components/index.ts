@@ -7,3 +7,4 @@ export * from './OnceCertComponents';
 export * from './Modal';
 export * from './FqaComponents';
 export * from './CampaignComponents';
+export * from './MissionComponents';
