@@ -25,30 +25,21 @@ export const FooterContainer = styled.div`
   }
 `;
 
-export const FooterMainIconContainer = styled.div`
+export const FooterIconContainer = styled.button`
   display: flex;
   flex-direction: column;
-`;
-export const FooterMissionIconContainer = styled(NavLink)`
-  display: flex;
-  flex-direction: column;
-`;
-export const FooterSearchIconContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-export const FooterProfileIconContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+
+  border: none;
+  background: none;
 `;
 
 export const Icon = styled.img`
   width: 20px;
   height: 20px;
-  margin-left: 2px;
+  margin: auto;
 `;
-export const IconText = styled.div<{ MainTextColor: string }>`
-  color: ${(props) => (props.MainTextColor === '' ? '#acd60a' : '#D9D9D9')};
+export const IconText = styled.div<{ TextColor: boolean }>`
+  color: ${(props) => (props.TextColor ? '#acd60a' : '#D9D9D9')};
   font-size: 13px;
   font-weight: bold;
   margin-top: 7px;
