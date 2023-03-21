@@ -1,5 +1,5 @@
-import React from 'react';
-import { Routes, Route } from 'react-router';
+import React, { useEffect, useRef, useState } from 'react';
+import { Routes, Route, useLocation, useNavigate } from 'react-router';
 
 import styled from '@emotion/styled';
 import {
@@ -12,7 +12,35 @@ import {
   MissionPage,
 } from '@src/pages';
 
+//icons
+import FourSquaresIcon from '@assets/FourSquares.svg';
+import NoneFourSquaresIcon from '@assets/NoneCheck/NoneFourSquares.svg';
+import CheckedBoxIcon from '@assets/CheckedBox.svg';
+import NoneCheckedBoxIcon from '@assets/NoneCheck/NoneCheckedBox.svg';
+import ProfileIcon from '@assets/Profile.svg';
+import NoneProfileIcon from '@assets/NoneCheck/NoneProfile.svg';
+import SearchIcon from '@assets/Search.svg';
+import NoneSearchIcon from '@assets/NoneCheck/NoneSearch.svg';
+import { Footer } from './components';
+
 const App: React.FC = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [locationPathName, setLocationPath] = useState(location.pathname.split('/')[1]);
+  const mounted = useRef(false);
+
+  useEffect(() => {
+    if (!mounted.current) {
+      mounted.current = true;
+    } else {
+      setLocationPath(location.pathname.split('/')[1]);
+    }
+  });
+  const MainObject = { Icon: FourSquaresIcon, NIcon: NoneFourSquaresIcon, Tag: '메인', Path: '' };
+  const MissionObject = { Icon: CheckedBoxIcon, NIcon: NoneCheckedBoxIcon, Tag: '미션', Path: 'mission' };
+  const ProfileObject = { Icon: ProfileIcon, NIcon: NoneProfileIcon, Tag: '프로필', Path: 'profile' };
+  const SearchObject = { Icon: SearchIcon, NIcon: NoneSearchIcon, Tag: '검색', Path: 'search' };
+  console.log(locationPathName);
   return (
     <MediaResponsive>
       <MainScreen>
@@ -25,6 +53,11 @@ const App: React.FC = () => {
           <Route path="mission" element={<MissionPage />} />
           <Route path="campaign" element={<CampaignPage />}></Route>
         </Routes>
+        <Footer
+          locationPathName={locationPathName}
+          IconsArr={[MainObject, MissionObject, ProfileObject, SearchObject]}
+          navigate={navigate}
+        />
       </MainScreen>
     </MediaResponsive>
   );
