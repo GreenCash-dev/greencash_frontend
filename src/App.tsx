@@ -21,13 +21,18 @@ import ProfileIcon from '@assets/Profile.svg';
 import NoneProfileIcon from '@assets/NoneCheck/NoneProfile.svg';
 import SearchIcon from '@assets/Search.svg';
 import NoneSearchIcon from '@assets/NoneCheck/NoneSearch.svg';
-import { Footer } from './components';
+import { Footer, MissionModal } from './components';
+
+import { MissionModalState } from './atom/Mission';
+import { useRecoilState } from 'recoil';
 
 const App: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [locationPathName, setLocationPath] = useState(location.pathname.split('/')[1]);
   const mounted = useRef(false);
+
+  const [missionModalState, setMissionModalState] = useRecoilState(MissionModalState);
 
   useEffect(() => {
     if (!mounted.current) {
@@ -53,11 +58,15 @@ const App: React.FC = () => {
           <Route path="mission" element={<MissionPage />} />
           <Route path="campaign" element={<CampaignPage />}></Route>
         </Routes>
-        <Footer
-          locationPathName={locationPathName}
-          IconsArr={[MainObject, MissionObject, ProfileObject, SearchObject]}
-          navigate={navigate}
-        />
+        {missionModalState.view === 'mission' ? (
+          <MissionModal />
+        ) : (
+          <Footer
+            locationPathName={locationPathName}
+            IconsArr={[MainObject, MissionObject, ProfileObject, SearchObject]}
+            navigate={navigate}
+          />
+        )}
       </MainScreen>
     </MediaResponsive>
   );
