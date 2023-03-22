@@ -24,7 +24,7 @@ import NoneSearchIcon from '@assets/NoneCheck/NoneSearch.svg';
 import { Footer, MissionModal } from './components';
 
 import { MissionModalState } from './atom/Mission';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 
 const App: React.FC = () => {
   const location = useLocation();
@@ -32,7 +32,7 @@ const App: React.FC = () => {
   const [locationPathName, setLocationPath] = useState(location.pathname.split('/')[1]);
   const mounted = useRef(false);
 
-  const [missionModalState, setMissionModalState] = useRecoilState(MissionModalState);
+  const [missionModal, setMissionModal] = useRecoilState(MissionModalState);
 
   useEffect(() => {
     if (!mounted.current) {
@@ -45,7 +45,14 @@ const App: React.FC = () => {
   const MissionObject = { Icon: CheckedBoxIcon, NIcon: NoneCheckedBoxIcon, Tag: '미션', Path: 'mission' };
   const ProfileObject = { Icon: ProfileIcon, NIcon: NoneProfileIcon, Tag: '프로필', Path: 'profile' };
   const SearchObject = { Icon: SearchIcon, NIcon: NoneSearchIcon, Tag: '검색', Path: 'search' };
-  console.log(locationPathName);
+
+  const setMissionModalState = useSetRecoilState(MissionModalState);
+  const modalHandleClose = () => {
+    setMissionModalState((prev) => ({
+      ...prev,
+      view: 'default',
+    }));
+  };
   return (
     <MediaResponsive>
       <MainScreen>
@@ -58,14 +65,19 @@ const App: React.FC = () => {
           <Route path="mission" element={<MissionPage />} />
           <Route path="campaign" element={<CampaignPage />}></Route>
         </Routes>
-        {missionModalState.view === 'mission' ? (
-          <MissionModal />
-        ) : (
+        {missionModal.view === 'mission' ? (
+          <MissionModal handleCloseModalOnClick={modalHandleClose} />
+        ) : locationPathName === '' ||
+          locationPathName === 'mission' ||
+          locationPathName === 'search' ||
+          locationPathName === 'profile' ? (
           <Footer
             locationPathName={locationPathName}
             IconsArr={[MainObject, MissionObject, ProfileObject, SearchObject]}
             navigate={navigate}
           />
+        ) : (
+          <></>
         )}
       </MainScreen>
     </MediaResponsive>
