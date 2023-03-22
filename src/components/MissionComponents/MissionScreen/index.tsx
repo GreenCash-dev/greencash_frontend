@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from 'react';
+import React, { MouseEventHandler, SetStateAction } from 'react';
 
 import * as S from './styled';
 
@@ -6,13 +6,28 @@ interface MissionProps {
   Illustration: string;
   isReponsive: boolean;
   ModalOpenOnClick: MouseEventHandler;
+  setModalInfo: React.Dispatch<
+    SetStateAction<{
+      ModalTitle: string;
+      ModalTitleDesc: string;
+      ModalGetCash: number;
+      ModalInfoTitle: string;
+      ModalInfoDesc: string;
+    }>
+  >;
 }
 
-export const MissionScreenComponent: React.FC<MissionProps> = ({ Illustration, isReponsive, ModalOpenOnClick }) => {
+export const MissionScreenComponent: React.FC<MissionProps> = ({
+  Illustration,
+  isReponsive,
+  ModalOpenOnClick,
+  setModalInfo,
+}) => {
   return (
     <S.MissionScreenContainer>
       <S.MissionIllustration src={Illustration} />
       <S.TouchHere
+        onChange={() => setModalInfo('a', 'b', 2, 'd', 'c')}
         onClick={ModalOpenOnClick}
         THWidth="30px"
         THHeight="30px"
