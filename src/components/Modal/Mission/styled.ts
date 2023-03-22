@@ -46,19 +46,19 @@ export const TitleContainer = styled.div`
 `;
 
 export const MissionTitle = styled.strong`
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
   color: #000000;
   text-align: left;
 `;
 
 export const MissionDesc = styled.div`
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   color: #d9d9d9;
   text-align: left;
 
-  margin-top: 10px;
+  margin-top: 5px;
 `;
 export const YouCanGetCashContainer = styled.div`
   margin: 0 0 0 auto;
