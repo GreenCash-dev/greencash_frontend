@@ -34,7 +34,7 @@ export const MainPage: React.FC = () => {
       <S.Menus>
         <S.CashOnHandContainer>
           <S.CashOnHandPosition>
-            <CashOnHand AmountOfCash={havingCash.cash} />
+            <CashOnHand marginTop="-2.5px" marginRight="1px" AmountOfCash={havingCash.cash} />
           </S.CashOnHandPosition>
         </S.CashOnHandContainer>
         <S.OnecCertificationContainer onClick={() => navigate('/once')}>
