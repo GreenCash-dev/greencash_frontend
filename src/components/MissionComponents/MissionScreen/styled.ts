@@ -13,7 +13,6 @@ export const MissionIllustration = styled.img`
 
 export const TouchHere = styled.div<{ THWidth: string; THHeight: string; marginLeft: string; marginTop: string }>`
   position: absolute;
-  background: black;
   width: ${(props) => props.THWidth};
   height: ${(props) => props.THHeight};
   margin-left: ${(props) => props.marginLeft};
