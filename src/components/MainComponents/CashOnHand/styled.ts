@@ -22,13 +22,13 @@ export const CashOnHandIcon = styled.div`
   margin-left: 10px;
   margin-right: 0;
 `;
-export const CashOnHandIconText = styled.div`
+export const CashOnHandIconText = styled.div<{ marginTop: string; marginRight: string }>`
   font-size: 13px;
   text-align: center;
   color: rgba(185, 222, 42, 1);
 
-  margin-top: -2.5px;
-  margin-right: 1px;
+  margin-top: ${(props) => props.marginTop};
+  margin-right: ${(props) => props.marginRight};
 `;
 
 export const CashOnHandValue = styled.div`
@@ -36,7 +36,5 @@ export const CashOnHandValue = styled.div`
   font-weight: bold;
   color: rgba(185, 222, 42, 1);
 
-  margin: auto;
-  margin-left: 4px;
-  margin-top: 3px;
+  margin: auto auto auto 4px;
 `;
