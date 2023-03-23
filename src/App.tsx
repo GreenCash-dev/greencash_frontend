@@ -23,7 +23,7 @@ import SearchIcon from '@assets/Search.svg';
 import NoneSearchIcon from '@assets/NoneCheck/NoneSearch.svg';
 import { Footer, MissionModal } from './components';
 
-import { MissionModalState } from './atom/Mission';
+import { MissionModalState, missionDataState } from './atom/Mission';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 
 const App: React.FC = () => {
@@ -46,6 +46,8 @@ const App: React.FC = () => {
   const ProfileObject = { Icon: ProfileIcon, NIcon: NoneProfileIcon, Tag: '프로필', Path: 'profile' };
   const SearchObject = { Icon: SearchIcon, NIcon: NoneSearchIcon, Tag: '검색', Path: 'search' };
 
+  const [modalData, setModalData] = useRecoilState(missionDataState);
+
   const setMissionModalState = useSetRecoilState(MissionModalState);
   const modalHandleClose = () => {
     setMissionModalState((prev) => ({
@@ -66,7 +68,14 @@ const App: React.FC = () => {
           <Route path="campaign" element={<CampaignPage />}></Route>
         </Routes>
         {missionModal.view === 'mission' ? (
-          <MissionModal handleCloseModalOnClick={modalHandleClose} />
+          <MissionModal
+            handleCloseModalOnClick={modalHandleClose}
+            ModalTitle={modalData.ModalTitle}
+            ModalTitleDesc={modalData.ModalTitleDesc}
+            ModalGetCash={modalData.ModalGetCash}
+            ModalInfoTitle={modalData.ModalInfoTitle}
+            ModalInfoDesc={modalData.ModalInfoDesc}
+          />
         ) : locationPathName === '' ||
           locationPathName === 'mission' ||
           locationPathName === 'search' ||
