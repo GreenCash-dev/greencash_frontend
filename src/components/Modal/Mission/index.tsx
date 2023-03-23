@@ -5,28 +5,37 @@ import { CashOnHand } from '@components/MainComponents';
 
 interface MissionModalProps {
   handleCloseModalOnClick: MouseEventHandler;
+  ModalTitle: string;
+  ModalTitleDesc: string;
+  ModalGetCash: number;
+  ModalInfoTitle: string;
+  ModalInfoDesc: string;
 }
 
-export const MissionModal: React.FC<MissionModalProps> = ({ handleCloseModalOnClick }) => {
+export const MissionModal: React.FC<MissionModalProps> = ({
+  handleCloseModalOnClick,
+  ModalTitle,
+  ModalTitleDesc,
+  ModalGetCash,
+  ModalInfoTitle,
+  ModalInfoDesc,
+}) => {
   return (
     <S.ModalWarp>
       <S.MissionModalBox>
         <S.MissionWarpContainer>
           <S.MissionTopContainer>
             <S.TitleContainer>
-              <S.MissionTitle>물수건/물걸레 이용하기</S.MissionTitle>
-              <S.MissionDesc>물티슈 대신 물걸레로 청소해요</S.MissionDesc>
+              <S.MissionTitle>{ModalTitle}</S.MissionTitle>
+              <S.MissionDesc>{ModalTitleDesc}</S.MissionDesc>
             </S.TitleContainer>
             <S.YouCanGetCashContainer>
-              <CashOnHand marginTop={'-5.5px'} marginRight="1px" AmountOfCash={1000} />
+              <CashOnHand marginTop={'-5.5px'} marginRight="1px" AmountOfCash={ModalGetCash} />
             </S.YouCanGetCashContainer>
           </S.MissionTopContainer>
           <S.MissionInfoContainer>
-            <S.MissionInfoPoint>물티슈는 환경오염의 주범이에요!</S.MissionInfoPoint>
-            <S.MissionInfoDesc>
-              물티슈 대신 물수건 혹은 물걸레로 청소하고
-              <br /> 캐시를 지급받으세요.
-            </S.MissionInfoDesc>
+            <S.MissionInfoPoint>{ModalInfoTitle}</S.MissionInfoPoint>
+            <S.MissionInfoDesc>{ModalInfoDesc}</S.MissionInfoDesc>
           </S.MissionInfoContainer>
           <S.MissionButtonContainer>
             <S.MissionButton onClick={handleCloseModalOnClick}>
