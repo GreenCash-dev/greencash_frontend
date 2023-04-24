@@ -10,6 +10,7 @@ import {
   QuestionAndAnswerPage,
   CampaignPage,
   MissionPage,
+  StepCertificationPage,
 } from '@src/pages';
 
 //icons
@@ -65,7 +66,8 @@ const App: React.FC = () => {
           <Route path="donate" element={<DoGivePage />} />
           <Route path="qna" element={<QuestionAndAnswerPage />} />
           <Route path="mission" element={<MissionPage />} />
-          <Route path="campaign" element={<CampaignPage />}></Route>
+          <Route path="campaign" element={<CampaignPage />} />
+          <Route path="step" element={<StepCertificationPage />} />
         </Routes>
         {missionModal.view === 'mission' ? (
           <MissionModal
