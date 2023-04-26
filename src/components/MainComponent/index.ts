@@ -6,4 +6,3 @@ export * from './Question';
 export * from './Store';
 export * from './StepCertification';
 export * from './OnceCertification';
-//abcdefghijklmnopqrstuvwxyz

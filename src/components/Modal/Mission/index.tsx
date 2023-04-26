@@ -1,7 +1,7 @@
 import React, { MouseEventHandler } from 'react';
 
 import * as S from './styled';
-import { CashOnHand } from '@components/MainComponents';
+import { CashOnHand } from '@src/components';
 
 interface MissionModalProps {
   handleCloseModalOnClick: MouseEventHandler;
