@@ -5,7 +5,7 @@ export const StepCertification = styled.div`
   display: flex;
   flex-direction: column;
 
-  background-color: #fff;
+  background-color: rgba(245, 245, 245, 1);
 `;
 
 export const StepCertificationScreen = styled.div`
@@ -16,7 +16,6 @@ export const StepCertificationScreen = styled.div`
   flex-direction: column;
 
   margin: auto;
-  background: #fff;
 `;
 
 export const GoBackContainer = styled.div`
