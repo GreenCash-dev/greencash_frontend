@@ -29,7 +29,7 @@ export const MainPage: React.FC = () => {
   useSeo('메인');
 
   return (
-    <>
+    <S.MainContainer>
       <Navbar />
       <S.Menus>
         <S.CashOnHandContainer>
@@ -63,6 +63,6 @@ export const MainPage: React.FC = () => {
           <Question />
         </S.QAContainer>
       </S.Menus>
-    </>
+    </S.MainContainer>
   );
 };
