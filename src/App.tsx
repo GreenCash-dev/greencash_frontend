@@ -119,7 +119,7 @@ export const MediaResponsive = styled.main`
   margin: 0px auto;
   background-color: rgba(245, 245, 245, 1);
 `;
-export const MainScreen = styled.div`
+export const MainScreen = styled.section`
   position: relative;
   width: 100%;
   display: flex;
