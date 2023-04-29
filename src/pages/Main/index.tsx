@@ -40,7 +40,7 @@ export const MainPage: React.FC = () => {
         <S.OnecCertificationContainer onClick={() => navigate('/once')}>
           <OnceCertification />
         </S.OnecCertificationContainer>
-        <S.StepCertificationContainer>
+        <S.StepCertificationContainer onClick={() => navigate('/step')}>
           <StepCertification StepOne={false} StepTwo={false} StepThree={false} StepFour={false} />
         </S.StepCertificationContainer>
         <S.GuideLineContainer>
