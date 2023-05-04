@@ -11,6 +11,6 @@ export default defineConfig({
       { find: '@src', replacement: '/src' },
     ],
   },
-  plugins: [react(), checker({ typescript: true, eslint: { lintCommand: 'eslint ./src --ext .ts, .tsx' } })],
+  plugins: [react(), checker({ typescript: true, eslint: { lintCommand: 'eslint "**/*.{ts,tsx}"' } })],
   publicDir: false, // vite의 public 폴더 설정을 비활성화합니다.
 });
