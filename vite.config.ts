@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { checker } from 'vite-plugin-checker';
+import path from 'path';
 
 export default defineConfig({
   resolve: {
@@ -9,6 +10,9 @@ export default defineConfig({
       { find: '@assets', replacement: '/src/assets' },
       { find: '@src', replacement: '/src' },
     ],
+  },
+  build: {
+    outDir: path.join(__dirname, 'build'),
   },
   plugins: [react(), checker({ typescript: true, eslint: { lintCommand: 'eslint "**/*.{ts,tsx}"' } })],
   publicDir: false, // vite의 public 폴더 설정을 비활성화합니다.
