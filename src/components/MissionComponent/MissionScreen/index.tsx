@@ -5,7 +5,7 @@ import * as S from './styled';
 interface MissionProps {
   Illustration: string;
   isReponsive: boolean;
-  ModalOpenOnClick: any;
+  ModalOpenOnClick: (a: string, b: string, c: number, d: string, e: string) => void;
 }
 
 export const MissionScreenComponent: React.FC<MissionProps> = ({ Illustration, isReponsive, ModalOpenOnClick }) => {
