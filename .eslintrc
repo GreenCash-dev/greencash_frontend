@@ -14,7 +14,7 @@
   "rules": {
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-floating-promises": "off",
-    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "off", //사용하지 않는 변수 체크
     // "@typescript-eslint/no-use-before-define": ["error", { "variables": false }],
     "@typescript-eslint/no-useless-constructor": "error",
     "@typescript-eslint/no-misused-promises": "off",
