@@ -33,9 +33,34 @@ export const StepCertificationTitle = styled.strong`
   margin-left: 15px;
 `;
 
-export const StepTitleContainer = styled.div`
-  width: 100%;
+export const StepPoint = styled.div`
   display: flex;
-
   margin-top: 30px;
+`;
+
+export const ContentList = styled.div`
+  display: inline-block;
+  margin-top: 30px;
+`;
+
+export const Content = styled.div`
+  margin-top: 30px;
+`;
+export const ContentButton = styled.button`
+  height: 30px;
+
+  margin-right: 8px;
+
+  cursor: pointer;
+  border: 1.5px solid #898c99;
+  border-radius: 20px;
+`;
+
+export const ContentText = styled.h2`
+  margin: 0 6px 0 6px;
+
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: -1px;
 `;
