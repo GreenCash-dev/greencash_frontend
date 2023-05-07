@@ -1,2 +1,1 @@
-export * from './StepTitlePoint';
-export * from './StepTitle';
+export * from './One';
