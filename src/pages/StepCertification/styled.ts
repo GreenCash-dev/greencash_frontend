@@ -39,6 +39,8 @@ export const StepPoint = styled.div`
 `;
 
 export const ContentList = styled.div`
+  width: 90%;
+
   display: inline-block;
   margin-top: 30px;
 `;
@@ -50,14 +52,16 @@ export const ContentButton = styled.button`
   height: 30px;
 
   margin-right: 8px;
+  margin-bottom: 8px;
 
   cursor: pointer;
-  border: 1.5px solid #898c99;
+  border: 1px solid #9195a0;
   border-radius: 20px;
+  background-color: rgba(245, 245, 245, 1);
 `;
 
 export const ContentText = styled.h2`
-  margin: 0 6px 0 6px;
+  margin: 0 8px 0 8px;
 
   font-size: 12px;
   font-weight: bold;
