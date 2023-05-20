@@ -8,3 +8,5 @@ export * from './Modal';
 export * from './FqaComponent';
 export * from './CampaignComponent';
 export * from './MissionComponent';
+export * from './StepCertificationComponent';
+export * from './SearchComponent';
