@@ -11,6 +11,7 @@ import {
   CampaignPage,
   MissionPage,
   StepCertificationPage,
+  SearchPage,
 } from '@src/pages';
 
 //icons
@@ -67,7 +68,11 @@ const App: React.FC = () => {
           <Route path="qna" element={<QuestionAndAnswerPage />} />
           <Route path="mission" element={<MissionPage />} />
           <Route path="campaign" element={<CampaignPage />} />
-          <Route path="step" element={<StepCertificationPage />} />
+          <Route path="search" element={<SearchPage />} />
+          <Route path="step">
+            <Route path="one" element={<StepCertificationPage />} />
+            <Route path="two/:id" element={<StepCertificationPage />} />
+          </Route>
         </Routes>
         {missionModal.view === 'mission' ? (
           <MissionModal
@@ -84,7 +89,7 @@ const App: React.FC = () => {
           locationPathName === 'profile' ? (
           <Footer
             locationPathName={locationPathName}
-            IconsArr={[MainObject, MissionObject, ProfileObject, SearchObject]}
+            IconsArr={[MainObject, MissionObject, SearchObject, ProfileObject]}
             navigate={navigate}
           />
         ) : (
