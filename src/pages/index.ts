@@ -7,3 +7,4 @@ export * from './QuestionAnswer';
 export * from './Campaign';
 export * from './Mission';
 export * from './StepCertification';
+export * from './Search';
