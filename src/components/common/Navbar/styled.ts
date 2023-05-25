@@ -8,7 +8,7 @@ export const NavbarBox = styled.header`
   position: sticky;
 
   background-color: #ffffff;
-  box-shadow: rgb(0 0 0 / 4%) 0px 7px 10px 0px;
+  box-shadow: rgb(0 0 0 / 2%) 0px 7px 10px 0px;
 
   z-index: 99;
 `;
