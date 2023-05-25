@@ -68,3 +68,73 @@ export const ContentText = styled.h2`
   text-align: center;
   letter-spacing: -1px;
 `;
+
+export const EachDataBoxContainer = styled.div`
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  margin: 30px auto 0 auto;
+`;
+
+export const DescriptionContainer = styled.section`
+  width: 100%;
+  display: flex;
+
+  margin-top: 15px;
+  margin-bottom: 20px;
+`;
+
+export const exclamationMark = styled.img`
+  width: 15px;
+  height: 15px;
+
+  margin-top: 3px;
+`;
+export const DescriptionDataContainer = styled.div`
+  width: 90%;
+
+  margin-left: 5px;
+  line-height: 1.3rem;
+`;
+export const doNotItem = styled.p`
+  font-size: 14px;
+  font-weight: 500;
+
+  color: rgba(100, 100, 100, 1);
+`;
+export const otherTextureTitle = styled.p`
+  font-size: 14px;
+  font-weight: 500;
+
+  color: rgba(100, 100, 100, 1);
+`;
+
+export const otherTexture = styled.span`
+  font-size: 14px;
+  font-weight: 500;
+
+  color: rgba(160, 160, 160, 1);
+`;
+export const notTextureTitle = styled.p`
+  font-size: 14px;
+  font-weight: 500;
+
+  color: rgba(100, 100, 100, 1);
+`;
+
+export const notTexture = styled.span`
+  font-size: 14px;
+  font-weight: 500;
+
+  color: rgba(160, 160, 160, 1);
+`;
+
+export const dowayTip = styled.span`
+  font-size: 14px;
+  font-weight: 500;
+
+  color: rgba(160, 160, 160, 1);
+`;
