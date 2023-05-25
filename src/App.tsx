@@ -12,6 +12,7 @@ import {
   MissionPage,
   StepCertificationPage,
   SearchPage,
+  ProfilePage,
 } from '@src/pages';
 
 //icons
@@ -73,6 +74,7 @@ const App: React.FC = () => {
             <Route path="one" element={<StepCertificationPage />} />
             <Route path="two/:id" element={<StepCertificationPage />} />
           </Route>
+          <Route path="profile" element={<ProfilePage />} />
         </Routes>
         {missionModal.view === 'mission' ? (
           <MissionModal
