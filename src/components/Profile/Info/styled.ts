@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const InfoBox = styled.div`
   display: flex;
 
-  width: 305px;
+  width: 75%;
   height: 90px;
 
   border-radius: 10px;
@@ -39,7 +39,7 @@ export const ProfileName = styled.span`
 export const HaveCashContainer = styled.div`
   display: flex;
 
-  margin-top: 10px;
+  margin-top: 7px;
 `;
 export const HaveCash = styled.strong`
   font-size: 13px;
