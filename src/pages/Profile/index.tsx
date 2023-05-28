@@ -1,7 +1,7 @@
 import React from 'react';
 
 import * as S from './styled';
-import { DoCount, MissionProgress, Navbar, ProfileInfo } from '@src/components';
+import { Alarm, DoCount, MissionProgress, Navbar, ProfileInfo } from '@src/components';
 
 export const ProfilePage: React.FC = () => {
   return (
@@ -10,6 +10,7 @@ export const ProfilePage: React.FC = () => {
       <ProfileInfo />
       <MissionProgress />
       <DoCount />
+      <Alarm />
     </S.ProfileContainer>
   );
 };
