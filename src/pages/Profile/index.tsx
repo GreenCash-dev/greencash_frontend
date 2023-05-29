@@ -2,6 +2,7 @@ import React from 'react';
 
 import * as S from './styled';
 import { Alarm, DoCount, MissionProgress, Navbar, ProfileInfo } from '@src/components';
+import { ProfileData } from '@src/data/profileData';
 
 export const ProfilePage: React.FC = () => {
   return (
@@ -10,7 +11,9 @@ export const ProfilePage: React.FC = () => {
       <ProfileInfo />
       <MissionProgress />
       <DoCount />
-      <Alarm />
+      {ProfileData.map((data, idx) => {
+        return <Alarm key={idx} title={data.title} text={data.text} />;
+      })}
     </S.ProfileContainer>
   );
 };
