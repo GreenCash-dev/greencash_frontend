@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 
 import * as S from './styled';
 
-export const Alarm: React.FC = () => {
+interface AlarmProps {
+  title: string;
+  text: string;
+}
+
+export const Alarm: React.FC<AlarmProps> = ({ title, text }) => {
   //토글 버튼관리
   const [checked, setChecked] = useState<boolean>(false);
   const ToggleButtonOnClick = () => {
@@ -13,8 +18,8 @@ export const Alarm: React.FC = () => {
     <S.AlarmBox>
       <S.AlarmDataPosition>
         <S.AlarmBoxTextContainer>
-          <S.AlarmBoxTitle>분리배출 알림</S.AlarmBoxTitle>
-          <S.AlarmBoxText>매주 목요일 오전9시</S.AlarmBoxText>
+          <S.AlarmBoxTitle>{title}</S.AlarmBoxTitle>
+          <S.AlarmBoxText>{text}</S.AlarmBoxText>
         </S.AlarmBoxTextContainer>
         <S.AlarmToggleContainer>
           <S.AlarmToggleLabel onClick={ToggleButtonOnClick} toggleBoolean={checked}>
