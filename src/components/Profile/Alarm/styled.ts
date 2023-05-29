@@ -8,7 +8,7 @@ export const AlarmBox = styled.div`
   background-color: #fff;
 
   display: flex;
-  margin: 36px auto 0 auto;
+  margin: 12px auto 0 auto;
 `;
 
 export const AlarmDataPosition = styled.div`
