@@ -4,8 +4,8 @@ import { GobackIcon, EachDataBox } from '@src/components';
 import { StepTitleComponent, StepTitlePoint } from '@src/components/StepCertificationComponent';
 import * as S from './styled';
 
-import datas from '@src/data/stepOne';
-import stepTwoData from '@src/data/stepTwo';
+import datas from '@src/constants/stepOne';
+import stepTwoData from '@src/constants/stepTwo';
 
 export const StepCertificationPage: React.FC = () => {
   const [content, setContent] = useState<string>('');
