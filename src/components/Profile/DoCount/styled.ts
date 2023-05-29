@@ -7,6 +7,7 @@ export const DoCountContainer = styled.div`
   display: flex;
 
   margin-top: 36px;
+  margin-bottom: 36px;
 `;
 
 export const CountInfoContainer = styled.div`
