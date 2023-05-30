@@ -1,3 +1,10 @@
+import React, { useCallback, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { collection, getDocs } from 'firebase/firestore';
+import { auth, db } from '@src/firebase/clientApp';
+import { useAuthState } from 'react-firebase-hooks/auth';
+
 import {
   Campaign,
   CashOnHand,
@@ -14,38 +21,81 @@ import {
   StepCertification,
   Store,
 } from '@src/components';
-import { useSeo } from '@src/hooks';
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import * as S from './styled';
-import { useRecoilState } from 'recoil';
+import { useSeo } from '@src/hooks';
 import { havingCashState } from '@src/atom';
 
+interface UserInfo {
+  cash: number;
+  username: string;
+}
+
+interface cashType {
+  cash: number;
+}
+
 export const MainPage: React.FC = () => {
-  //https://www.crocus.co.kr/1582 css background gradation
   const navigate = useNavigate();
-  const [havingCash, setHavingCash] = useRecoilState(havingCashState);
+  const havingCash = useRecoilValue(havingCashState);
   const [stepOne, setStepOne] = useState<boolean>(false);
   const [stepTwo, setStepTwo] = useState<boolean>(false);
   const [stepThree, setStepThree] = useState<boolean>(false);
   const [stepFour, setStepFour] = useState<boolean>(false);
   const [level, setLevel] = useState<string>('');
+
+  const setHavingCashState = useSetRecoilState(havingCashState);
+
   useSeo('메인');
-  useEffect(() => {
-    setLevel(localStorage.getItem('stepLevel'));
-    if (level === '1') {
-      setStepOne(true);
-    }
+
+  const [cash, setCash] = useState<cashType[]>([]);
+  const [userInfo, setUserInfo] = useState<UserInfo[]>([
+    {
+      cash: 0,
+      username: '',
+    },
+  ]);
+  const [username, setUserName] = useState<string>('');
+
+  const greencashCollectionRef = collection(db, process.env.REACT_APP_FIREBASE_CLOUD_NAME);
+  // eslint-disable-next-line prefer-const
+
+  /**
+   *  cash: doc.data().cash,
+      username: doc.data().username,
+   */
+  const getCashs = useCallback(async () => {
+    const data = await getDocs(greencashCollectionRef);
+    const GreenCashData = data.docs.map((doc) => ({
+      cash: doc.data().cash,
+      username: doc.data().username,
+    }));
+    const OnlyCash = data.docs.map((doc) => doc.data().cash);
+    setUserInfo(GreenCashData);
+    console.log(OnlyCash[0], 'ㅎㅇ');
+    setCash(OnlyCash);
   }, []);
-  console.log(stepOne);
+  const filterData = useCallback(() => {
+    console.log(0);
+  }, []);
+  // eslint-disable-next-line prefer-const
+  let asd = 0;
+  useEffect(() => {
+    getCashs();
+    filterData();
+    setUserName(localStorage.getItem('Authentication'));
+    cash.forEach((v) => {
+      asd += v.cash;
+    });
+  }, []);
+  console.log(userInfo, cash);
   return (
     <S.MainContainer>
       <Navbar />
       <S.Menus>
         <S.CashOnHandContainer>
           <S.CashOnHandPosition>
-            <CashOnHand marginTop="-2.5px" marginRight="1px" AmountOfCash={havingCash.cash} />
+            <CashOnHand marginTop="-2.5px" marginRight="1px" AmountOfCash={asd} />
           </S.CashOnHandPosition>
         </S.CashOnHandContainer>
         <S.OnecCertificationContainer onClick={() => navigate('/once')}>
