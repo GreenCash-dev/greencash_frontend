@@ -2,12 +2,16 @@ import React from 'react';
 
 import * as S from './styled';
 
-export const ProfileInfo: React.FC = () => {
+interface ProfileProps {
+  name: string;
+}
+
+export const ProfileInfo: React.FC<ProfileProps> = ({ name }) => {
   return (
     <S.InfoBox>
       <S.InfoPicture />
       <S.ProfileInfoContainer>
-        <S.ProfileName>홍길동</S.ProfileName>
+        <S.ProfileName>{name}</S.ProfileName>
         <S.HaveCashContainer>
           <S.CashOnHandIcon>
             <S.CashOnHandIconText marginRight="1px" marginTop="-2.5px">
