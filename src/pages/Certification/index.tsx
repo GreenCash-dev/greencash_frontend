@@ -1,13 +1,16 @@
 import { Button, CheckedPicture, GobackIcon, SuccessCertificationModal } from '@src/components';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 
 import * as S from './styled';
 import { certificationPictureState } from '@src/atom/CertificationPicture';
-import { SuccessModalState, havingCashState } from '@src/atom';
+import { AuthData, SuccessModalState, havingCashState } from '@src/atom';
 import Gift from '@assets/Gift.svg';
 import ShoppingCartIcon from '@assets/ShoppingCart.svg';
+import { addDoc, collection, getDocs } from 'firebase/firestore';
+import { auth, db } from '@src/firebase/clientApp';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 export const OnceCertificationPage: React.FC = () => {
   const navigate = useNavigate();
@@ -18,6 +21,8 @@ export const OnceCertificationPage: React.FC = () => {
   const setHavingCashState = useSetRecoilState(havingCashState);
   const [havingCash, setHavingCash] = useRecoilState(havingCashState);
   const [sendCash, setSendCash] = useState(0);
+  const [userName, setUserName] = useRecoilState(AuthData);
+
   useEffect(() => {
     if (pic.pictureFive !== '') {
       setSendCash(200);
@@ -31,7 +36,11 @@ export const OnceCertificationPage: React.FC = () => {
       setSendCash(40);
     }
   }, []);
-  const SuccessCertificationOnClick = () => {
+  const greencashCollectionRef = collection(db, process.env.REACT_APP_FIREBASE_CLOUD_NAME);
+  const [user, loading, error] = useAuthState(auth);
+
+  const SuccessCertificationOnClick = async () => {
+    await addDoc(greencashCollectionRef, { cash: sendCash, createdAt: Date.now(), username: user.displayName });
     setCertificationPictureState((prev) => ({
       ...prev,
       pictureOne: '',
