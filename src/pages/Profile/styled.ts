@@ -5,3 +5,7 @@ export const ProfileContainer = styled.section`
   height: 100vh;
   background-color: rgba(245, 245, 245, 1);
 `;
+
+export const ProfileFilter = styled.div<{ filterBoolean }>`
+  filter: ${(props) => (props.filterBoolean ? 'none' : 'blur(2px)')};
+`;
