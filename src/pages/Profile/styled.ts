@@ -7,5 +7,5 @@ export const ProfileContainer = styled.section`
 `;
 
 export const ProfileFilter = styled.div<{ filterBoolean }>`
-  filter: ${(props) => (props.filterBoolean ? 'none' : 'blur(2px)')};
+  filter: ${(props) => (props.filterBoolean ? 'none' : 'blur(4px)')};
 `;
