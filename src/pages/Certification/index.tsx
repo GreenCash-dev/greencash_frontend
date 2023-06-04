@@ -40,7 +40,7 @@ export const OnceCertificationPage: React.FC = () => {
   const [user, loading, error] = useAuthState(auth);
 
   const SuccessCertificationOnClick = async () => {
-    await addDoc(greencashCollectionRef, { cash: sendCash, createdAt: Date.now(), username: user.displayName });
+    await addDoc(greencashCollectionRef, { cash: sendCash, createdAt: Date.now(), username: user.uid });
     setCertificationPictureState((prev) => ({
       ...prev,
       pictureOne: '',
