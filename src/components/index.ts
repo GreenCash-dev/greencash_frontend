@@ -11,3 +11,4 @@ export * from './MissionComponent';
 export * from './StepCertificationComponent';
 export * from './SearchComponent';
 export * from './Profile';
+export * from './Auth';
