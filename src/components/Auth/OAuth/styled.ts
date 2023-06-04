@@ -31,6 +31,7 @@ export const OAuthLogo = styled.img`
 export const OAuthText = styled.span`
   margin: auto auto auto 10px;
 
+  color: #000;
   font-family: Pretendard;
   font-weight: 700;
   font-size: 14px;
