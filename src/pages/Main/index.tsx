@@ -19,14 +19,11 @@ import * as S from './styled';
 import { useSeo } from '@src/hooks';
 import { havingCashState } from '@src/atom';
 import { SearchPage } from '../Search';
+import { useSetRecoilState, useRecoilState } from 'recoil';
 
 interface UserInfo {
   cash: number;
   username: string;
-}
-
-interface cashType {
-  cash: number;
 }
 
 export const MainPage: React.FC = () => {
@@ -39,7 +36,6 @@ export const MainPage: React.FC = () => {
 
   useSeo('메인');
 
-  const [cash, setCash] = useState<cashType>();
   const [userInfo, setUserInfo] = useState<UserInfo[]>([
     {
       cash: 0,
@@ -55,29 +51,29 @@ export const MainPage: React.FC = () => {
    *  cash: doc.data().cash,
       username: doc.data().username,
    */
-  let GreenCashCalculate = 0;
-  const [havingCash, setHavingCash] = useState<number>(0);
-  const getCashs = useCallback(async () => {
+
+  const [asd, setAsd] = useState<number[]>();
+  const [havingCash, setHavingCash] = useRecoilState(havingCashState);
+  const setCash = useSetRecoilState(havingCashState);
+  const getCash = useCallback(async () => {
     const data = await getDocs(greencashCollectionRef);
     const GreenCashData = data.docs.map((doc) => ({
       cash: doc.data().cash,
       username: doc.data().username,
     }));
     setUserInfo(GreenCashData);
-    userInfo
-      .filter((data) => data.username === username)
-      .map((data2) => {
-        GreenCashCalculate += data2.cash;
-        setHavingCash(GreenCashCalculate);
-        console.log(havingCash, 1);
-      });
   }, []);
+  console.log(userInfo.filter((data) => data.username === localStorage.getItem('Authentication')).reduce((a, b) => {}));
   useEffect(() => {
-    console.log(userInfo, '?');
-    getCashs();
+    getCash();
     setUserName(localStorage.getItem('Authentication'));
-  }, [GreenCashCalculate]);
-  console.log(havingCash);
+
+    // setCash((prev) => ({
+    //   ...prev,
+    //   cash: prev.cash + asd[0],
+    // }));
+  }, []);
+
   return (
     <Suspense fallback={<SearchPage />}>
       <S.MainContainer>
@@ -85,7 +81,7 @@ export const MainPage: React.FC = () => {
         <S.Menus>
           <S.CashOnHandContainer>
             <S.CashOnHandPosition>
-              <CashOnHand marginTop="-2.5px" marginRight="1px" AmountOfCash={havingCash} />
+              <CashOnHand marginTop="-2.5px" marginRight="1px" AmountOfCash={havingCash.cash} />
             </S.CashOnHandPosition>
           </S.CashOnHandContainer>
           <S.OnecCertificationContainer onClick={() => navigate('/once')}>

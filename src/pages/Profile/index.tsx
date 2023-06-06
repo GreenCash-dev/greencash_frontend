@@ -16,21 +16,24 @@ export const ProfilePage: React.FC = () => {
   const [user, loading, error] = useAuthState(auth);
   const LogoutOnClick = () => {
     signOut(auth);
+    localStorage.removeItem('Authentication');
   };
   useEffect(() => {
     if (user) {
       setUserId(user.uid);
-      localStorage.getItem('Authentication') ? 0 : localStorage.setItem('Authentication', `${userId}`);
+      localStorage.setItem('Authentication', `${user.uid}`);
     } else {
       console.log('not logged in');
     }
-  }, []);
+  }, [user]);
   return (
     <Suspense fallback={<div>asd</div>}>
       <S.ProfileContainer>
         <Navbar />
         {user ? (
-          <ProfileInfo name={user ? user.displayName : ''} />
+          <ProfileInfo
+            name={user ? (user.displayName.length > 5 ? user.displayName.substring(0, 5) : user.displayName) : ''}
+          />
         ) : (
           <OAuth GoogleLogo={GoogleLogo} GoogleOAuthOnClick={() => signInWithGoogle()} />
         )}
