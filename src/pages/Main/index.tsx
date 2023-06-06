@@ -53,8 +53,17 @@ export const MainPage: React.FC = () => {
    */
 
   const [asd, setAsd] = useState<number[]>();
-  const [havingCash, setHavingCash] = useRecoilState(havingCashState);
+  const [shareHavingCash, setShareCash] = useRecoilState(havingCashState);
+  const [havingCash, setHavingCash] = useState<number>();
   const setCash = useSetRecoilState(havingCashState);
+  const FilterData = (a) => {
+    for (let i = 0; i < userInfo.length; i++) {
+      if (userInfo[i].username === localStorage.getItem('Authentication')) {
+        a += userInfo[i].cash;
+      }
+    }
+    console.log(a);
+  };
   const getCash = useCallback(async () => {
     const data = await getDocs(greencashCollectionRef);
     const GreenCashData = data.docs.map((doc) => ({
@@ -63,17 +72,20 @@ export const MainPage: React.FC = () => {
     }));
     setUserInfo(GreenCashData);
   }, []);
-  console.log(userInfo.filter((data) => data.username === localStorage.getItem('Authentication')).reduce((a, b) => {}));
+
   useEffect(() => {
     getCash();
     setUserName(localStorage.getItem('Authentication'));
 
     // setCash((prev) => ({
     //   ...prev,
-    //   cash: prev.cash + asd[0],
+    //   cash: result as any,
     // }));
   }, []);
-
+  // eslint-disable-next-line prefer-const
+  let result = 0;
+  FilterData(result);
+  console.log(result, 1);
   return (
     <Suspense fallback={<SearchPage />}>
       <S.MainContainer>
@@ -81,7 +93,7 @@ export const MainPage: React.FC = () => {
         <S.Menus>
           <S.CashOnHandContainer>
             <S.CashOnHandPosition>
-              <CashOnHand marginTop="-2.5px" marginRight="1px" AmountOfCash={havingCash.cash} />
+              <CashOnHand marginTop="-2.5px" marginRight="1px" AmountOfCash={shareHavingCash.cash} />
             </S.CashOnHandPosition>
           </S.CashOnHandContainer>
           <S.OnecCertificationContainer onClick={() => navigate('/once')}>
