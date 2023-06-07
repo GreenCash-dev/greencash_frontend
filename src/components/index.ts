@@ -12,3 +12,4 @@ export * from './StepCertificationComponent';
 export * from './SearchComponent';
 export * from './Profile';
 export * from './Auth';
+export * from './Loading';
