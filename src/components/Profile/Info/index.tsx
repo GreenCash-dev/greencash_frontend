@@ -4,9 +4,10 @@ import * as S from './styled';
 
 interface ProfileProps {
   name: string;
+  cash: number;
 }
 
-export const ProfileInfo: React.FC<ProfileProps> = ({ name }) => {
+export const ProfileInfo: React.FC<ProfileProps> = ({ name, cash }) => {
   return (
     <S.InfoBox>
       <S.InfoPicture />
@@ -18,7 +19,7 @@ export const ProfileInfo: React.FC<ProfileProps> = ({ name }) => {
               c
             </S.CashOnHandIconText>
           </S.CashOnHandIcon>
-          <S.HaveCash>{`${20000} 캐시`}</S.HaveCash>
+          <S.HaveCash>{`${cash} 캐시`}</S.HaveCash>
         </S.HaveCashContainer>
       </S.ProfileInfoContainer>
     </S.InfoBox>
