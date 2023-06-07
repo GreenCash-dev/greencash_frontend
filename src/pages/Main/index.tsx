@@ -33,17 +33,8 @@ export const MainPage: React.FC = () => {
   const [stepThree, setStepThree] = useState<boolean>(false);
   const [stepFour, setStepFour] = useState<boolean>(false);
   const [level, setLevel] = useState<string>('');
-  const [shareHavingCash, setShareCash] = useRecoilState(havingCashState);
 
   useSeo('메인');
-
-  const [userInfo, setUserInfo] = useState<UserInfo[]>([
-    {
-      cash: 0,
-      username: '',
-    },
-  ]);
-  const [username, setUserName] = useState<string>('');
 
   const [havingCash, setHavingCash] = useState<number>();
   const setCash = useSetRecoilState(havingCashState);
