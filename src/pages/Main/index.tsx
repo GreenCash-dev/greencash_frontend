@@ -33,6 +33,7 @@ export const MainPage: React.FC = () => {
   const [stepThree, setStepThree] = useState<boolean>(false);
   const [stepFour, setStepFour] = useState<boolean>(false);
   const [level, setLevel] = useState<string>('');
+  const [shareHavingCash, setShareCash] = useRecoilState(havingCashState);
 
   useSeo('메인');
 
@@ -44,85 +45,65 @@ export const MainPage: React.FC = () => {
   ]);
   const [username, setUserName] = useState<string>('');
 
-  const greencashCollectionRef = collection(db, process.env.REACT_APP_FIREBASE_CLOUD_NAME);
-  // eslint-disable-next-line prefer-const
-
-  /**
-   *  cash: doc.data().cash,
-      username: doc.data().username,
-   */
-
-  const [asd, setAsd] = useState<number[]>();
-  const [shareHavingCash, setShareCash] = useRecoilState(havingCashState);
   const [havingCash, setHavingCash] = useState<number>();
   const setCash = useSetRecoilState(havingCashState);
-  const FilterData = (a) => {
-    for (let i = 0; i < userInfo.length; i++) {
-      if (userInfo[i].username === localStorage.getItem('Authentication')) {
-        a += userInfo[i].cash;
-      }
-    }
-    console.log(a);
-  };
-  const getCash = useCallback(async () => {
-    const data = await getDocs(greencashCollectionRef);
-    const GreenCashData = data.docs.map((doc) => ({
-      cash: doc.data().cash,
-      username: doc.data().username,
-    }));
-    setUserInfo(GreenCashData);
-  }, []);
-
+  const greencashCollectionRef = collection(db, process.env.REACT_APP_FIREBASE_CLOUD_NAME);
   useEffect(() => {
-    getCash();
-    setUserName(localStorage.getItem('Authentication'));
-
-    // setCash((prev) => ({
-    //   ...prev,
-    //   cash: result as any,
-    // }));
+    const getCash = async () => {
+      const data = await getDocs(greencashCollectionRef);
+      const GreenCashData = data.docs.map((doc) => ({
+        cash: doc.data().cash as number,
+        username: doc.data().username as string,
+      }));
+      return GreenCashData.filter((user) => user.username === localStorage.getItem('Authentication')).map(
+        (data) => data.cash
+      );
+    };
+    // setUserName(localStorage.getItem('Authentication'));
+    getCash().then((arr) => {
+      const sum = arr.reduce((a, b) => a + b);
+      setHavingCash(sum);
+      setCash((prev) => ({
+        ...prev,
+        cash: sum,
+      }));
+    });
   }, []);
-  // eslint-disable-next-line prefer-const
-  let result = 0;
-  FilterData(result);
-  console.log(result, 1);
   return (
-    <Suspense fallback={<SearchPage />}>
-      <S.MainContainer>
-        <Navbar />
-        <S.Menus>
-          <S.CashOnHandContainer>
-            <S.CashOnHandPosition>
-              <CashOnHand marginTop="-2.5px" marginRight="1px" AmountOfCash={shareHavingCash.cash} />
-            </S.CashOnHandPosition>
-          </S.CashOnHandContainer>
-          <S.OnecCertificationContainer onClick={() => navigate('/once')}>
-            <OnceCertification />
-          </S.OnecCertificationContainer>
-          <S.StepCertificationContainer onClick={() => navigate('/step/one')}>
-            <StepCertification StepOne={stepOne} StepTwo={stepTwo} StepThree={stepThree} StepFour={stepFour} />
-          </S.StepCertificationContainer>
-          <S.GuideLineContainer>
-            <GuideLine />
-          </S.GuideLineContainer>
-          <S.InteractionContainer>
-            <S.CampaignContainer>
-              <Campaign />
-            </S.CampaignContainer>
-            <S.StoreGiveContainer>
-              <S.StoreContainer>
-                <Store />
-              </S.StoreContainer>
-              <S.DoGiveContainer>
-                <Give />
-              </S.DoGiveContainer>
-            </S.StoreGiveContainer>
-          </S.InteractionContainer>
-          <S.QAContainer>
-            <Question />
-          </S.QAContainer>
-        </S.Menus>
-      </S.MainContainer>
-    </Suspense>
+    <S.MainContainer>
+      <Navbar />
+      <S.Menus>
+        <S.CashOnHandContainer>
+          <S.CashOnHandPosition>
+            <CashOnHand marginTop="-2.5px" marginRight="1px" AmountOfCash={havingCash} />
+          </S.CashOnHandPosition>
+        </S.CashOnHandContainer>
+        <S.OnecCertificationContainer onClick={() => navigate('/once')}>
+          <OnceCertification />
+        </S.OnecCertificationContainer>
+        <S.StepCertificationContainer onClick={() => navigate('/step/one')}>
+          <StepCertification StepOne={stepOne} StepTwo={stepTwo} StepThree={stepThree} StepFour={stepFour} />
+        </S.StepCertificationContainer>
+        <S.GuideLineContainer>
+          <GuideLine />
+        </S.GuideLineContainer>
+        <S.InteractionContainer>
+          <S.CampaignContainer>
+            <Campaign />
+          </S.CampaignContainer>
+          <S.StoreGiveContainer>
+            <S.StoreContainer>
+              <Store />
+            </S.StoreContainer>
+            <S.DoGiveContainer>
+              <Give />
+            </S.DoGiveContainer>
+          </S.StoreGiveContainer>
+        </S.InteractionContainer>
+        <S.QAContainer>
+          <Question />
+        </S.QAContainer>
+      </S.Menus>
+    </S.MainContainer>
   );
 };
