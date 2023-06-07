@@ -9,11 +9,15 @@ import { auth } from '@src/firebase/clientApp';
 import { signOut } from 'firebase/auth';
 
 import GoogleLogo from '@assets/google.png';
+import { havingCashState } from '@src/atom';
+import { useRecoilState } from 'recoil';
 
 export const ProfilePage: React.FC = () => {
   const [userId, setUserId] = useState<string>('');
   const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
   const [user, loading, error] = useAuthState(auth);
+  const [shareHavingCash, setShareCash] = useRecoilState(havingCashState);
+
   const LogoutOnClick = () => {
     signOut(auth);
     localStorage.removeItem('Authentication');
@@ -32,6 +36,7 @@ export const ProfilePage: React.FC = () => {
         <Navbar />
         {user ? (
           <ProfileInfo
+            cash={shareHavingCash.cash}
             name={user ? (user.displayName.length > 5 ? user.displayName.substring(0, 5) : user.displayName) : ''}
           />
         ) : (
