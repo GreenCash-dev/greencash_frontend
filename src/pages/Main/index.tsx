@@ -37,8 +37,10 @@ export const MainPage: React.FC = () => {
   useSeo('메인');
 
   const [havingCash, setHavingCash] = useState<number>();
+  const [useCash, setUseCash] = useState<number>();
   const setCash = useSetRecoilState(havingCashState);
   const greencashCollectionRef = collection(db, process.env.REACT_APP_FIREBASE_CLOUD_NAME);
+  const useCashCollectionRef = collection(db, 'usecash');
   useEffect(() => {
     const getCash = async () => {
       const data = await getDocs(greencashCollectionRef);
@@ -46,11 +48,30 @@ export const MainPage: React.FC = () => {
         cash: doc.data().cash as number,
         username: doc.data().username as string,
       }));
+
       return GreenCashData.filter((user) => user.username === localStorage.getItem('Authentication')).map(
         (data) => data.cash
       );
     };
-    // setUserName(localStorage.getItem('Authentication'));
+    const getUseCash = async () => {
+      const useData = await getDocs(useCashCollectionRef);
+      const GreenUseData = useData.docs.map((doc) => ({
+        cash: doc.data().cash as string,
+        username: doc.data().userId as string,
+      }));
+      return GreenUseData.filter((user) => user.username === localStorage.getItem('Authentication')).map(
+        (data) => data.cash
+      );
+    };
+    //근본적으로 인풋 값을 number로 넘겨줘야 함
+    getUseCash().then((arr) => {
+      try {
+        const sum = arr.length >= 1 ? arr.reduce((a, b) => a + b) : 0;
+        // setUseCash(sum);
+      } catch (err) {
+        console.log('사용한 캐시가 없음');
+      }
+    });
     getCash().then((arr) => {
       const sum = arr.reduce((a, b) => a + b);
       setHavingCash(sum);
