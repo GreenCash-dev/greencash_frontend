@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { addDoc, collection, getDocs } from 'firebase/firestore';
@@ -25,6 +25,7 @@ export const DoGivePage: React.FC = () => {
   const navigate = useNavigate();
   const state = Number(giveCash);
   const greencashGiveCollectionRef = collection(db, process.env.REACT_APP_FIREBASE_CLOUD_NAME_GIVE);
+  const useGreencashGiveCollectionRef = collection(db, 'usecash');
 
   const getGiveCash = async () => {
     const data = await getDocs(greencashGiveCollectionRef);
@@ -34,16 +35,19 @@ export const DoGivePage: React.FC = () => {
     return GreenCashGiveData.map((data) => Number(data.cash));
   };
 
-  const resultGetGiveCash = () => {
+  const resultGetGiveCash = useCallback(() => {
     getGiveCash().then((arr) => {
-      const giveSum = arr.reduce((a, b) => a + b);
-      console.log(giveSum);
-      setDonatingCashState((prev) => ({
-        ...prev,
-        bedonated: giveSum,
-      }));
+      try {
+        const giveSum = arr.reduce((a, b) => a + b);
+        setDonatingCashState((prev) => ({
+          ...prev,
+          bedonated: giveSum,
+        }));
+      } catch (err) {
+        console.log('불러온 캐시가 존재하지 않음');
+      }
     });
-  };
+  }, []);
 
   const handleClose = () => {
     setModalState((prev) => ({
@@ -54,6 +58,7 @@ export const DoGivePage: React.FC = () => {
   };
 
   const DoGiveOnClick = async () => {
+    await addDoc(useGreencashGiveCollectionRef, { cash: giveCash, userId: localStorage.getItem('Authentication') });
     await addDoc(greencashGiveCollectionRef, { cash: giveCash });
     setHavingCashState((prev) => ({
       ...prev,
@@ -71,7 +76,6 @@ export const DoGivePage: React.FC = () => {
   }, []);
 
   const isCashShort = havingCash.cash - state < 0 || state < 0 || !state;
-
   return (
     <S.DoGivePageContainer>
       <S.GoBackSection>
