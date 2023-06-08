@@ -1,23 +1,50 @@
-import { Button, DoGiveDesc, DoGiveInput, DoingGive, GobackIcon } from '@src/components';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useRecoilState, useSetRecoilState } from 'recoil';
+import { addDoc, collection, getDocs } from 'firebase/firestore';
 
 import * as S from './styled';
+import { Button, DoGiveDesc, DoGiveInput, DoingGive, GobackIcon, GiveSuccessModal } from '@src/components';
+import { DonatingCashState, SuccessModalState, havingCashState } from '@src/atom';
+import { db } from '@src/firebase/clientApp';
+
 import PlantIcon from '@assets/Plant.svg';
 import UpArrowIcon from '@assets/UpArrow.svg';
-import { useRecoilState, useSetRecoilState } from 'recoil';
-import { DonatingCashState, SuccessModalState, havingCashState } from '@src/atom';
-import { GiveSuccessModal } from '@src/components/Modal';
 
 export const DoGivePage: React.FC = () => {
-  const [havingCash, setHavingCash] = useRecoilState(havingCashState); // 보유중인 캐시
-  const setHavingCashState = useSetRecoilState(havingCashState); //값 설정
+  const [havingCash, setHavingCash] = useRecoilState(havingCashState);
+  const setHavingCashState = useSetRecoilState(havingCashState);
 
   const [donatingCash, setDonatingCash] = useRecoilState(DonatingCashState);
   const setDonatingCashState = useSetRecoilState(DonatingCashState);
-  const [giveCash, setGiveCash] = useState(''); //
-  const setGiveModalState = useSetRecoilState(SuccessModalState);
+
+  const [giveCash, setGiveCash] = useState<string>('');
   const [modalState, setModalState] = useRecoilState(SuccessModalState);
+  const setGiveModalState = useSetRecoilState(SuccessModalState);
+
+  const navigate = useNavigate();
+  const state = Number(giveCash);
+  const greencashGiveCollectionRef = collection(db, process.env.REACT_APP_FIREBASE_CLOUD_NAME_GIVE);
+
+  const getGiveCash = async () => {
+    const data = await getDocs(greencashGiveCollectionRef);
+    const GreenCashGiveData = data.docs.map((doc) => ({
+      cash: doc.data().cash as string,
+    }));
+    return GreenCashGiveData.map((data) => Number(data.cash));
+  };
+
+  const resultGetGiveCash = () => {
+    getGiveCash().then((arr) => {
+      const giveSum = arr.reduce((a, b) => a + b);
+      console.log(giveSum);
+      setDonatingCashState((prev) => ({
+        ...prev,
+        bedonated: giveSum,
+      }));
+    });
+  };
+
   const handleClose = () => {
     setModalState((prev) => ({
       ...prev,
@@ -25,9 +52,26 @@ export const DoGivePage: React.FC = () => {
       open: false,
     }));
   };
-  const navigate = useNavigate();
-  // eslint-disable-next-line prefer-const
-  const state = Number(giveCash);
+
+  const DoGiveOnClick = async () => {
+    await addDoc(greencashGiveCollectionRef, { cash: giveCash });
+    setHavingCashState((prev) => ({
+      ...prev,
+      cash: prev.cash - state,
+    }));
+    setGiveModalState((prev) => ({
+      ...prev,
+      view: 'success',
+    }));
+    resultGetGiveCash();
+  };
+
+  useEffect(() => {
+    resultGetGiveCash();
+  }, []);
+
+  const isCashShort = havingCash.cash - state < 0 || state < 0 || !state;
+
   return (
     <S.DoGivePageContainer>
       <S.GoBackSection>
@@ -38,7 +82,13 @@ export const DoGivePage: React.FC = () => {
       </S.DoGiveDescSection>
       <S.DoGiveCashInputSection>
         <DoGiveInput setGiveCash={setGiveCash} />
-        {havingCash.cash - state < 0 && <S.WarningText>캐시가 부족해요.</S.WarningText>}
+        {giveCash === '' ? (
+          <></>
+        ) : isCashShort ? (
+          <S.WarningText>캐시가 부족하거나 올바르지 않아요</S.WarningText>
+        ) : (
+          <></>
+        )}
       </S.DoGiveCashInputSection>
       <S.DoGiveCashInfoSection>
         <DoingGive
@@ -50,27 +100,14 @@ export const DoGivePage: React.FC = () => {
       </S.DoGiveCashInfoSection>
       <S.DoGiveButtonSection>
         <Button
-          CashIsMinus={havingCash.cash - state < 0 || state < 0 || !state}
-          OnClick={() => {
-            setDonatingCashState((prev) => ({
-              ...prev,
-              bedonated: prev.bedonated + state,
-            }));
-            setHavingCashState((prev) => ({
-              ...prev,
-              cash: prev.cash - state,
-            }));
-            setGiveModalState((prev) => ({
-              ...prev,
-              view: 'success',
-            }));
-          }}
+          CashIsMinus={isCashShort}
+          OnClick={DoGiveOnClick}
           BackgroundColor="#B5E565"
           fontColor="#ffffff"
           fontSize="16px"
           DoText="기부하기"
         />
-        {modalState.view === 'success' ? <GiveSuccessModal CloseHandler={handleClose} /> : null}
+        {modalState.view === 'success' && <GiveSuccessModal CloseHandler={handleClose} />}
       </S.DoGiveButtonSection>
     </S.DoGivePageContainer>
   );
