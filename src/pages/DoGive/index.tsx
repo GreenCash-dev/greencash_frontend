@@ -18,15 +18,13 @@ export const DoGivePage: React.FC = () => {
   const [donatingCash, setDonatingCash] = useRecoilState(DonatingCashState);
   const setDonatingCashState = useSetRecoilState(DonatingCashState);
 
-  const [giveCash, setGiveCash] = useState<string>('');
+  const [giveCash, setGiveCash] = useState<number>(0);
   const [modalState, setModalState] = useRecoilState(SuccessModalState);
   const setGiveModalState = useSetRecoilState(SuccessModalState);
 
   const navigate = useNavigate();
-  const state = Number(giveCash);
   const greencashGiveCollectionRef = collection(db, process.env.REACT_APP_FIREBASE_CLOUD_NAME_GIVE);
   const useGreencashGiveCollectionRef = collection(db, 'usecash');
-
   const getGiveCash = async () => {
     const data = await getDocs(greencashGiveCollectionRef);
     const GreenCashGiveData = data.docs.map((doc) => ({
@@ -62,7 +60,7 @@ export const DoGivePage: React.FC = () => {
     await addDoc(greencashGiveCollectionRef, { cash: giveCash });
     setHavingCashState((prev) => ({
       ...prev,
-      cash: prev.cash - state,
+      cash: prev.cash - giveCash,
     }));
     setGiveModalState((prev) => ({
       ...prev,
@@ -75,7 +73,7 @@ export const DoGivePage: React.FC = () => {
     resultGetGiveCash();
   }, []);
 
-  const isCashShort = havingCash.cash - state < 0 || state < 0 || !state;
+  const isCashShort = havingCash.cash - giveCash < 0 || giveCash < 0 || giveCash === 0;
   return (
     <S.DoGivePageContainer>
       <S.GoBackSection>
@@ -86,13 +84,7 @@ export const DoGivePage: React.FC = () => {
       </S.DoGiveDescSection>
       <S.DoGiveCashInputSection>
         <DoGiveInput setGiveCash={setGiveCash} />
-        {giveCash === '' ? (
-          <></>
-        ) : isCashShort ? (
-          <S.WarningText>캐시가 부족하거나 올바르지 않아요</S.WarningText>
-        ) : (
-          <></>
-        )}
+        {isCashShort ? <S.WarningText>캐시가 부족하거나 올바르지 않아요</S.WarningText> : <></>}
       </S.DoGiveCashInputSection>
       <S.DoGiveCashInfoSection>
         <DoingGive
@@ -104,7 +96,7 @@ export const DoGivePage: React.FC = () => {
       </S.DoGiveCashInfoSection>
       <S.DoGiveButtonSection>
         <Button
-          CashIsMinus={isCashShort}
+          CashIsMinus={isCashShort || !giveCash}
           OnClick={DoGiveOnClick}
           BackgroundColor="#B5E565"
           fontColor="#ffffff"
