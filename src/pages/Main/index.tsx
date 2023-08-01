@@ -65,7 +65,7 @@ export const MainPage: React.FC = () => {
         );
       };
       const [cashArray, useCashArray] = await Promise.all([getCash(), getUseCash()]);
-      const sumHavingCash = cashArray.reduce((a, b) => a + b);
+      const sumHavingCash = useCashArray.length >= 1 ? cashArray.reduce((a, b) => a + b) : 0;
       const sumUseCash = useCashArray.length >= 1 ? useCashArray.reduce((a, b) => a + b) : 0;
       setHavingCash(sumHavingCash);
       setUseCash(sumUseCash);
