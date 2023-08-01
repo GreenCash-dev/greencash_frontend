@@ -35,6 +35,7 @@ export const CapturePage: React.FC = () => {
       sendData(imageSrc);
       setImgSrc(imageSrc);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cameraRef]);
   // eslint-disable-next-line prefer-const
   let nj = 0;

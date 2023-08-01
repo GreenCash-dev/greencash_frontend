@@ -7,7 +7,7 @@ export const Store: React.FC = () => {
   return (
     <S.StoreBox>
       <S.StorePosition>
-        <S.StoreIcon src={ShoppingCartIcon} />
+        <S.StoreIcon src={ShoppingCartIcon as string} />
         <S.StoreText>스토어</S.StoreText>
       </S.StorePosition>
     </S.StoreBox>

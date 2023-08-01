@@ -8,7 +8,7 @@ export const MissionProgress: React.FC = () => {
   return (
     <S.MissionProgessContainer>
       <S.MissionProgressTop>
-        <S.MissionProgressCheckbox src={CheckBoxPNG} />
+        <S.MissionProgressCheckbox src={CheckBoxPNG as string} />
         <S.MissionProgressTitle>오늘 하루 미션 수행 정도</S.MissionProgressTitle>
       </S.MissionProgressTop>
       <S.MissionProgressBottom>

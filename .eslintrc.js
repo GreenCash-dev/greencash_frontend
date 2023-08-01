@@ -6,7 +6,7 @@ module.exports = {
     browser: true,
   },
 
-  extends: ['next/core-web-vitals', 'prettier'],
+  extends: ['prettier'],
   plugins: ['prettier', 'import', 'react', 'react-hooks', 'jsx-a11y'],
 
   rules: {
@@ -18,37 +18,6 @@ module.exports = {
     'no-return-await': 'off',
 
     'prettier/prettier': ['error', { endOfLine: 'auto' }],
-    'import/no-unresolved': ['error'],
-    'import/order': [
-      'error',
-      {
-        groups: ['builtin', 'external', 'internal', ['parent', 'sibling'], 'index'],
-        pathGroups: [
-          {
-            pattern: '{react*,react*/**}',
-            group: 'external',
-            position: 'before',
-          },
-          {
-            pattern: '{next*,next*/**}',
-            group: 'external',
-            position: 'before',
-          },
-          {
-            pattern: '@comma/**',
-            group: 'external',
-            position: 'before',
-          },
-        ],
-        pathGroupsExcludedImportTypes: ['react', 'next'],
-        'newlines-between': 'always',
-        alphabetize: {
-          order: 'asc',
-          caseInsensitive: true,
-        },
-      },
-    ],
-    'import/prefer-default-export': 'off',
 
     'react/jsx-filename-extension': ['warn', { extensions: ['.tsx'] }],
     'react/jsx-no-target-blank': 'error',

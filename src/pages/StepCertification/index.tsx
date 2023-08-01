@@ -17,14 +17,14 @@ export const StepCertificationPage: React.FC = () => {
   const [dowayState, setDowayState] = useState<string>('');
   const [dowayTipState, setDowayTipState] = useState<string>('');
   const handleClickButton = (
-    e,
-    donot,
-    otherTextureTitle,
-    otherTexture,
-    notTextureTitle,
-    notTexture,
-    doway,
-    dowayTip
+    e: React.SetStateAction<string>,
+    donot: React.SetStateAction<string>,
+    otherTextureTitle: React.SetStateAction<string>,
+    otherTexture: React.SetStateAction<string>,
+    notTextureTitle: React.SetStateAction<string>,
+    notTexture: React.SetStateAction<string>,
+    doway: React.SetStateAction<string>,
+    dowayTip: React.SetStateAction<string>
   ) => {
     setContent(e);
     setDoNotState(donot);

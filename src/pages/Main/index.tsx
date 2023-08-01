@@ -9,6 +9,11 @@ import { havingCashState } from '@src/atom';
 import { SearchPage } from '../Search';
 import { useSetRecoilState, useRecoilState } from 'recoil';
 import { Navbar } from '@src/components';
+
+import WhiteHeart from '@assets/WhiteHeart.svg';
+import Gift from '@assets/Gift.svg';
+import QuestionIcon from '@assets/Question.svg';
+
 import {
   Campaign,
   CashOnHand,
@@ -78,6 +83,7 @@ export const MainPage: React.FC = () => {
       ...prev,
       cash: resultCash,
     }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <S.MainContainer>
@@ -99,19 +105,19 @@ export const MainPage: React.FC = () => {
         </S.GuideLineContainer>
         <S.InteractionContainer>
           <S.CampaignContainer>
-            <Campaign />
+            <Campaign ImageSrc={WhiteHeart as string} />
           </S.CampaignContainer>
           <S.StoreGiveContainer>
             <S.StoreContainer>
               <Store />
             </S.StoreContainer>
             <S.DoGiveContainer>
-              <Give />
+              <Give ImageSrc={Gift as string} />
             </S.DoGiveContainer>
           </S.StoreGiveContainer>
         </S.InteractionContainer>
         <S.QAContainer>
-          <Question />
+          <Question ImageSrc={QuestionIcon as string} />
         </S.QAContainer>
       </S.Menus>
     </S.MainContainer>

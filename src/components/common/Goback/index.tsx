@@ -10,5 +10,5 @@ interface PathMoveProps {
 }
 
 export const GobackIcon: React.FC<PathMoveProps> = ({ MoveWhere, NavigateFunc }) => (
-  <S.LeftArrow alt="뒤로가기" onClick={() => NavigateFunc(MoveWhere as string)} src={LeftArrowIcon} />
+  <S.LeftArrow alt="뒤로가기" onClick={() => NavigateFunc(MoveWhere as string)} src={LeftArrowIcon as string} />
 );

@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 
-import * as S from './styled';
 import {
   Back_Bottom,
   Back_Desc,
@@ -16,8 +15,11 @@ import {
   Title,
   TopNavbar,
 } from '@src/components/Landing';
-import { useScrollFadeIn } from '@src/hooks';
 import { Campaign } from '@src/components/Main';
+import { useScrollFadeIn } from '@src/hooks';
+
+import WhiteHeart from '@assets/WhiteHeart.svg';
+import * as S from './styled';
 
 export const Landing: React.FC = () => {
   //이거 스크롤 할 때 정해진 Top 위치로 이동하기로
@@ -158,7 +160,7 @@ export const Landing: React.FC = () => {
         <S.CampaignSection>
           <S.CampaignTextContainer>
             <Title textAlign={'none'} TitleText="캠페인" />
-            <Campaign />
+            <Campaign ImageSrc={WhiteHeart as string} />
           </S.CampaignTextContainer>
           <S.CampaignImgContainer>
             <S.CampaignImg src="https://cdn.discordapp.com/attachments/1054718420651872266/1078571338463203388/faeff604a99d037b.png" />

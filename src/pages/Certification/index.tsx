@@ -36,6 +36,7 @@ export const OnceCertificationPage: React.FC = () => {
     } else if (pic.pictureOne !== '') {
       setSendCash(40);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const greencashCollectionRef = collection(db, process.env.REACT_APP_FIREBASE_CLOUD_NAME);
   const [user, loading, error] = useAuthState(auth);
@@ -130,8 +131,8 @@ export const OnceCertificationPage: React.FC = () => {
         </S.ButtonContainer>
         {modalState.view === 'success' ? (
           <SuccessCertificationModal
-            StoreIcon={ShoppingCartIcon}
-            DoGiveIcon={Gift}
+            StoreIcon={ShoppingCartIcon as string}
+            DoGiveIcon={Gift as string}
             GoHereStore={GoStoreOnClick}
             GoHereDonate={GoDonateOnClick}
             CloseHandler={handleClose}

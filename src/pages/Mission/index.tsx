@@ -33,7 +33,7 @@ export const MissionPage: React.FC = () => {
       </S.MissionHeaderContainer>
       <MissionScreenComponent
         ModalOpenOnClick={isOpenOnClick}
-        Illustration={MissionIllustration}
+        Illustration={MissionIllustration as string}
         isReponsive={isResponsive}
       />
     </S.MissionContainer>

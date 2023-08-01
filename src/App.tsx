@@ -43,11 +43,22 @@ const App: React.FC = () => {
     } else {
       setLocationPath(location.pathname.split('/')[1]);
     }
-  });
-  const MainObject = { Icon: FourSquaresIcon, NIcon: NoneFourSquaresIcon, Tag: '메인', Path: '' };
-  const MissionObject = { Icon: CheckedBoxIcon, NIcon: NoneCheckedBoxIcon, Tag: '미션', Path: 'mission' };
-  const ProfileObject = { Icon: ProfileIcon, NIcon: NoneProfileIcon, Tag: '프로필', Path: 'profile' };
-  const SearchObject = { Icon: SearchIcon, NIcon: NoneSearchIcon, Tag: '검색', Path: 'search' };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const MainObject = { Icon: FourSquaresIcon as string, NIcon: NoneFourSquaresIcon as string, Tag: '메인', Path: '' };
+  const MissionObject = {
+    Icon: CheckedBoxIcon as string,
+    NIcon: NoneCheckedBoxIcon as string,
+    Tag: '미션',
+    Path: 'mission',
+  };
+  const ProfileObject = {
+    Icon: ProfileIcon as string,
+    NIcon: NoneProfileIcon as string,
+    Tag: '프로필',
+    Path: 'profile',
+  };
+  const SearchObject = { Icon: SearchIcon as string, NIcon: NoneSearchIcon as string, Tag: '검색', Path: 'search' };
 
   const [modalData, setModalData] = useRecoilState(missionDataState);
 

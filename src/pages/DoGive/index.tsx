@@ -47,6 +47,7 @@ export const DoGivePage: React.FC = () => {
         console.log('불러온 캐시가 존재하지 않음');
       }
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleClose = () => {
@@ -73,6 +74,7 @@ export const DoGivePage: React.FC = () => {
 
   useEffect(() => {
     resultGetGiveCash();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const isCashShort = havingCash.cash - giveCash < 0 || giveCash < 0 || giveCash === 0;
@@ -91,9 +93,9 @@ export const DoGivePage: React.FC = () => {
       <S.DoGiveCashInfoSection>
         <DoingGive
           GivingCash={donatingCash.bedonated}
-          PlantIconSrc={PlantIcon}
+          PlantIconSrc={PlantIcon as string}
           OwnCash={havingCash.cash}
-          UpArrowIconSrc={UpArrowIcon}
+          UpArrowIconSrc={UpArrowIcon as string}
         />
       </S.DoGiveCashInfoSection>
       <S.DoGiveButtonSection>

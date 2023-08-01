@@ -40,7 +40,7 @@ export const ProfilePage: React.FC = () => {
             name={user ? (user.displayName.length > 5 ? user.displayName.substring(0, 5) : user.displayName) : ''}
           />
         ) : (
-          <OAuth GoogleLogo={GoogleLogo} GoogleOAuthOnClick={() => signInWithGoogle()} />
+          <OAuth GoogleLogo={GoogleLogo as string} GoogleOAuthOnClick={() => signInWithGoogle()} />
         )}
         <S.ProfileFilter filterBoolean={user}>
           <MissionProgress />
