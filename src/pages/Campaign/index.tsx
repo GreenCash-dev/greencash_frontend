@@ -1,14 +1,9 @@
 import React, { useState } from 'react';
 
 import * as S from './styled';
-import {
-  CampaignCardElement,
-  CampaignPeriod,
-  CampaignsDesc,
-  GobackIcon,
-  ToggleContentComponent,
-} from '@src/components';
 import { useNavigate } from 'react-router';
+import { GobackIcon } from '@src/components/common';
+import { CampaignCardElement, CampaignsDesc, ToggleContentComponent } from '@src/components/Campaign';
 
 export const CampaignPage: React.FC = () => {
   const navigate = useNavigate();

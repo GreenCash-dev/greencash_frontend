@@ -4,12 +4,14 @@ import { useRecoilState, useSetRecoilState } from 'recoil';
 import { addDoc, collection, getDocs } from 'firebase/firestore';
 
 import * as S from './styled';
-import { Button, DoGiveDesc, DoGiveInput, DoingGive, GobackIcon, GiveSuccessModal } from '@src/components';
 import { DonatingCashState, SuccessModalState, havingCashState } from '@src/atom';
 import { db } from '@src/firebase/clientApp';
 
 import PlantIcon from '@assets/Plant.svg';
 import UpArrowIcon from '@assets/UpArrow.svg';
+import { GobackIcon } from '@src/components/common/Goback';
+import { DoGiveDesc, DoGiveInput, DoingGive } from '@src/components/DoGive';
+import { Button, GiveSuccessModal } from '@src/components';
 
 export const DoGivePage: React.FC = () => {
   const [havingCash, setHavingCash] = useRecoilState(havingCashState);

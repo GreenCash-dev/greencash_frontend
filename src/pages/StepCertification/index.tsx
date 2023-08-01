@@ -1,11 +1,11 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { GobackIcon, EachDataBox } from '@src/components';
-import { StepTitleComponent, StepTitlePoint } from '@src/components/StepCertificationComponent';
 import * as S from './styled';
 
 import datas from '@src/constants/stepOne';
 import stepTwoData from '@src/constants/stepTwo';
+import { GobackIcon } from '@src/components';
+import { EachDataBox, StepTitleComponent, StepTitlePoint } from '@src/components/StepCertification';
 
 export const StepCertificationPage: React.FC = () => {
   const [content, setContent] = useState<string>('');

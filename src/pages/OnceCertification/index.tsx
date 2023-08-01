@@ -1,4 +1,3 @@
-import { CaptureOptionsBox, GobackIcon } from '@src/components';
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -6,6 +5,8 @@ import Webcam from 'react-webcam';
 import * as S from './styled';
 import { useRecoilState } from 'recoil';
 import { certificationPictureState } from '@src/atom/CertificationPicture';
+import { GobackIcon } from '@src/components';
+import { CaptureOptionsBox } from '@src/components/OnceCertification';
 
 const videoConstraints = {
   facingMode: 'environment',

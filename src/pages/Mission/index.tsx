@@ -1,4 +1,3 @@
-import { MissionHeader, MissionModal, MissionScreenComponent } from '@src/components';
 import React, { useState } from 'react';
 
 import * as S from './styled';
@@ -7,6 +6,7 @@ import MissionIllustration from '@assets/image 24.png';
 import { useSetRecoilState } from 'recoil';
 import { MissionModalState, missionDataState } from '@src/atom/Mission';
 import { useMediaQuery } from 'react-responsive';
+import { MissionHeader, MissionScreenComponent } from '@src/components/Mission';
 
 export const MissionPage: React.FC = () => {
   const isResponsive = useMediaQuery({ minWidth: '768px' });

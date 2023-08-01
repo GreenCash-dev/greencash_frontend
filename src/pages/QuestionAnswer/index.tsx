@@ -1,8 +1,9 @@
-import { GobackIcon, QnABox } from '@src/components';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import * as S from './styled';
+import { GobackIcon } from '@src/components';
+import { QnABox } from '@src/components/Fqa';
 
 export const QuestionAndAnswerPage: React.FC = () => {
   const navigate = useNavigate();

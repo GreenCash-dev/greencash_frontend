@@ -1,4 +1,4 @@
-import { Button, CheckedPicture, GobackIcon, SuccessCertificationModal } from '@src/components';
+import { Button, GobackIcon, SuccessCertificationModal } from '@src/components';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState, useSetRecoilState } from 'recoil';
@@ -11,6 +11,7 @@ import ShoppingCartIcon from '@assets/ShoppingCart.svg';
 import { addDoc, collection, getDocs } from 'firebase/firestore';
 import { auth, db } from '@src/firebase/clientApp';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { CheckedPicture } from '@src/components/OnceCertification';
 
 export const OnceCertificationPage: React.FC = () => {
   const navigate = useNavigate();

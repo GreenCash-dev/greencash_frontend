@@ -4,7 +4,6 @@ import * as S from './styled';
 import {
   Back_Bottom,
   Back_Desc,
-  Campaign,
   Gift,
   Guide,
   MainList,
@@ -16,8 +15,9 @@ import {
   LandingStore,
   Title,
   TopNavbar,
-} from '@src/components';
+} from '@src/components/Landing';
 import { useScrollFadeIn } from '@src/hooks';
+import { Campaign } from '@src/components/Main';
 
 export const Landing: React.FC = () => {
   //이거 스크롤 할 때 정해진 Top 위치로 이동하기로

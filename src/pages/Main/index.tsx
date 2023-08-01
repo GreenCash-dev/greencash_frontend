@@ -3,23 +3,22 @@ import { useNavigate } from 'react-router-dom';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '@src/firebase/clientApp';
 
-import {
-  Campaign,
-  CashOnHand,
-  Give,
-  GuideLine,
-  Navbar,
-  OnceCertification,
-  Question,
-  StepCertification,
-  Store,
-} from '@src/components';
-
 import * as S from './styled';
 import { useSeo } from '@src/hooks';
 import { havingCashState } from '@src/atom';
 import { SearchPage } from '../Search';
 import { useSetRecoilState, useRecoilState } from 'recoil';
+import { Navbar } from '@src/components';
+import {
+  Campaign,
+  CashOnHand,
+  Give,
+  GuideLine,
+  OnceCertification,
+  Question,
+  StepCertification,
+  Store,
+} from '@src/components/Main';
 
 interface UserInfo {
   cash: number;
